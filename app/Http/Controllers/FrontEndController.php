@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LiveStream;
 use Illuminate\Http\Request;
 
 class FrontEndController extends Controller
@@ -20,6 +21,14 @@ class FrontEndController extends Controller
     public function about()
     {
         return view('layouts.front-end.about');
+    }
+    /**
+     * About page
+     */
+    public function live()
+    {
+        $streams = LiveStream::all();
+        return view('layouts.front-end.live', compact('streams'));
     }
 
     /**

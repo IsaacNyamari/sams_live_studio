@@ -4,6 +4,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontendBooking;
 use App\Http\Controllers\FrontEndController;
+use App\Http\Controllers\LiveStreamController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,7 @@ Route::get('/donate', [FrontEndController::class, 'donate'])->name('donate');
 Route::get('/about', [FrontEndController::class, 'about'])->name('about');
 Route::get('/services', [FrontEndController::class, 'services'])->name('services');
 Route::get('/contact', [FrontEndController::class, 'contact'])->name('contact');
+Route::get('/live', [FrontEndController::class, 'live'])->name('live');
 Route::get('/terms', [FrontEndController::class, 'terms'])->name('terms');
 Route::get('/booking-policy', [FrontEndController::class, 'bookingPolicy'])->name('booking-policy');
 Route::resource('/booking-page', FrontendBooking::class)->middleware('auth');
@@ -41,6 +43,9 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/users/{user}/payments', [UserController::class, 'userPayments'])->name('dashboard.user.payments')->middleware(['auth']);
     Route::get('/users/{user}/bookings', [UserController::class, 'userBookings'])->name('dashboard.user.bookings')->middleware(['auth']);
     Route::get('/media', [DashboardController::class, 'media'])->name('dashboard.media')->middleware(['auth']);
+    Route::resource('/streams', LiveStreamController::class)->middleware(['auth']);
+    Route::get('/streams', [LiveStreamController::class, 'index'])->name('dashboard.streams')->middleware(['auth']);
+    Route::post('/streams/{stream}/end', [LiveStreamController::class, 'stop'])->name('dashboard.streams.end')->middleware(['auth']);
 })->middleware(['auth', 'verified']);
 
 

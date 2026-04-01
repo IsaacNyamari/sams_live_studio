@@ -21,6 +21,9 @@
                 <x-nav-link :href="route('services')" :active="request()->routeIs('services')">
                     {{ __('Services') }}
                 </x-nav-link>
+                <x-nav-link :href="route('live')" :active="request()->routeIs('live')">
+                    {{ __('Live') }}
+                </x-nav-link>
                 <x-nav-link :href="route('donate')" :active="request()->routeIs('donate')">
                     {{ __('Donate') }}
                 </x-nav-link>
@@ -48,7 +51,8 @@
 
             <button aria-label="menu-btn" type="button"
                 class="menu-btn inline-block md:hidden active:scale-90 transition dark:text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" class="text-gray-900 dark:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"
+                    class="text-gray-900 dark:text-white">
                     <path
                         d="M3 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2z"
                         fill="currentColor" />
@@ -65,6 +69,9 @@
                     </x-nav-link>
                     <x-nav-link :href="route('services')" :active="request()->routeIs('services')">
                         {{ __('Services') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('live')" :active="request()->routeIs('live')">
+                        {{ __('Live') }}
                     </x-nav-link>
                     <x-nav-link :href="route('donate')" :active="request()->routeIs('donate')">
                         {{ __('Donate') }}

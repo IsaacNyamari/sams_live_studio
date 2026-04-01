@@ -41,15 +41,18 @@
                         </svg>
                         {{ __('Media') }}
                     </x-sidebar-links>
+                    <x-sidebar-links :href="route('dashboard.streams')" :active="request()->routeIs(['dashboard.streams','streams.create','streams.edit'])">
+            <i class="fa fa-video-camera group-hover:text-[#FF8F20]" fill="#FF8F20" x="0px" y="0px" width="20" height="20"
+                            >
+            </i>
+                        {{ __('Streams') }}
+                    </x-sidebar-links>
 
                     <x-sidebar-links :href="route('dashboard.payments')" :active="request()->routeIs('dashboard.payments*', 'dashboard.user.payments')">
                         <i class="fa fa-dollar" width="20" height="20" aria-hidden="true"></i>
                         {{ __('Payments') }}
                     </x-sidebar-links>
-                    <x-sidebar-links :href="route('dashboard.users')" :active="request()->routeIs(
-                        'dashboard.users*',
-                        'dashboard.user.bookings',
-                    )">
+                    <x-sidebar-links :href="route('dashboard.users')" :active="request()->routeIs('dashboard.users*', 'dashboard.user.bookings')">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="1.5" class="group-hover:text-[#FF8F20]">
                             <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
