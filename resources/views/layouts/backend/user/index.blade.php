@@ -6,6 +6,18 @@
     </x-slot>
 
     <div class="py-4">
+        @session('success')
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                <strong class="font-bold">Success! </strong>
+                <span class="block sm:inline">{{ session('success') }}</span>
+            </div>
+        @endsession
+        @session('error')
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                <strong class="font-bold">Error! </strong>
+                <span class="block sm:inline">{{ session('error') }}</span>
+            </div>
+        @endsession
         <div class="max-w-full mx-auto sm:px-2 lg:px-2">
             <div class="bg-white/50 dark:bg-[#000080]/80 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100 ">
@@ -76,8 +88,12 @@
 
                         <div class="bg-[#F8FAFC] shadow-xl rounded-2xl w-full max-w-md p-6 sm:p-8">
 
-                            <form action="#" method="POST" class="space-y-5">
+                            <form action="{{ route('dashboard.users.sendMail', $user) }}" method="POST"
+                                class="space-y-5">
+                                @csrf
                                 <h5 class="text-center">{{ $user->email }}</h5>
+                                <input type="hidden" name="email" value="{{ $user->email }}">
+                                <input type="hidden" name="name" value="{{ $user->name }}">
                                 <!-- Subject -->
                                 <div>
                                     <label for="subject"
@@ -88,9 +104,9 @@
 
                                 <!-- Message -->
                                 <div>
-                                    <label for="email"
+                                    <label for="message"
                                         class="block text-left text-sm font-medium text-gray-700 mb-1">Message</label>
-                                    <textarea type="email" id="email" name="email" required class="form-control transition" rows="5"></textarea>
+                                    <textarea type="message" id="message" name="message" required class="form-control transition" rows="5"></textarea>
                                 </div>
                                 <!-- Submit Button -->
                                 <button type="submit"

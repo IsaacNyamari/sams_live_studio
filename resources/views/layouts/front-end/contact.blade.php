@@ -58,7 +58,6 @@
                             <div>
                                 <h3 class="text-white font-semibold mb-1">Location</h3>
                                 <p class="text-gray-300">Westlands, Nairobi, Kenya</p>
-                                <p class="text-gray-300">ABC Place, 3rd Floor, Studio 7</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-4">

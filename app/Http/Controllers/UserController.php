@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendClientMail;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -30,6 +33,26 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+    }
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function sendMail(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'nullable|string',
+            'email' => 'required|email',
+            'subject' => 'required|string',
+            'message' => 'required|string',
+        ]);
+
+        try {
+            Mail::to($data['email'])->queue(new SendClientMail('', $data['subject'], $data['message'], $data['email']));
+            return back()->with('success', 'Email queued successfully!');
+        } catch (\Exception $e) {
+            Log::error('Failed to queue email: ' . $e->getMessage());
+            return back()->with('error', 'Failed to queue email. Please try again.');
+        }
     }
 
     /**

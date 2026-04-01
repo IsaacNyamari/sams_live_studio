@@ -10,20 +10,24 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class SendClientMail extends Mailable
+class SendClientMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
+    
     public $subject;
-    public $message;
+    public $messageContent; // Renamed from $message to avoid conflict with Mailable's message method
     public $email;
+    public $name;
+    
     /**
      * Create a new message instance.
      */
-    public function __construct($subject, $message, $email)
+    public function __construct($name, $subject, $message, $email)
     {
         $this->subject = $subject;
-        $this->message = $message;
+        $this->messageContent = $message; // Store as messageContent
         $this->email = $email;
+        $this->name = $name;
     }
 
     /**
@@ -42,7 +46,13 @@ class SendClientMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'layouts.mail.send-client',
+            with: [
+                'name' => $this->name,
+                'messageContent' => $this->messageContent,
+                'email' => $this->email,
+                'subject' => $this->subject,
+            ]
         );
     }
 

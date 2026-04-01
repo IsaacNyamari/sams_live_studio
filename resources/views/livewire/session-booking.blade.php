@@ -16,7 +16,7 @@
             </p>
         </div>
     </section>
-    @if (!env('BOOKING_SESSIONS'))
+    @if (env('BOOKING_SESSIONS'))
         <!-- Booking Form Section -->
         <section class="py-16 px-4 bg-[#000080]/80">
             <div class="max-w-6xl mx-auto">

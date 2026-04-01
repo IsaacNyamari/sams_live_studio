@@ -47,10 +47,11 @@
             </ul>
 
             <button aria-label="menu-btn" type="button"
-                class="menu-btn inline-block md:hidden active:scale-90 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+                class="menu-btn inline-block md:hidden active:scale-90 transition dark:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" class="text-gray-900 dark:text-white">
                     <path
-                        d="M3 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2z" />
+                        d="M3 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2z"
+                        fill="currentColor" />
                 </svg>
             </button>
 

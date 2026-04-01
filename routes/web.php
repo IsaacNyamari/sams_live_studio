@@ -37,6 +37,7 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/payments', [DashboardController::class, 'getAdminPayments'])->name('dashboard.payments');
     Route::get('/users', [UserController::class, 'index'])->name('dashboard.users')->middleware(['auth']);
     Route::get('/users/{user}', [UserController::class, 'show'])->name('dashboard.users.show')->middleware(['auth']);
+    Route::post('/users/{user}/send-mail', [UserController::class, 'sendMail'])->name('dashboard.users.sendMail')->middleware(['auth']);
     Route::get('/users/{user}/payments', [UserController::class, 'userPayments'])->name('dashboard.user.payments')->middleware(['auth']);
     Route::get('/users/{user}/bookings', [UserController::class, 'userBookings'])->name('dashboard.user.bookings')->middleware(['auth']);
     Route::get('/media', [DashboardController::class, 'media'])->name('dashboard.media')->middleware(['auth']);
