@@ -1,4 +1,15 @@
 @extends('frontend')
+@section('description')
+    <meta name="description"
+        content="Support {{ config('app.name') }} with your donation. Help us acquire professional cameras, audio gear, and production equipment to elevate our live streaming studio in Kenya.">
+@endsection
+@section('keywords')
+    <meta name="keywords"
+        content="Donate to {{ config('app.name') }}, support live streaming, Kenya production studio, professional equipment, 4K cameras, audio gear, studio upgrades">
+@endsection
+@section('featured_image')
+    <meta property="og:image" content="{{ asset('images/support/donate.jpeg') }}" />
+@endsection
 @section('content')
     <div>
         <style>

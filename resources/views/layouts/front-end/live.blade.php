@@ -21,7 +21,7 @@
         <!-- Streams Section -->
         <section class="py-16 px-4 bg-[#000080]/80">
             <div class="max-w-6xl mx-auto">
-                @empty($streams)
+                @if (empty($streams) || $streams->isEmpty())
                     <!-- No Streams Available Message -->
                     <div class="text-center py-16 px-4">
                         <div class="max-w-md mx-auto">
@@ -37,7 +37,8 @@
                                 </svg>
                             </div>
                             <h3 class="text-2xl font-bold text-white mb-2">No Live Streams Available</h3>
-                            <p class="text-gray-300 mb-6">There are currently no active live broadcasts. Check back later
+                            <p class="text-gray-300 mb-6">There are currently no active live broadcasts. Check back
+                                later
                                 for upcoming streams!</p>
                             <div class="flex flex-col sm:flex-row gap-3 justify-center">
                                 <button onclick="window.location.reload()"
@@ -73,8 +74,7 @@
                                 <div class="relative w-full" style="aspect-ratio: 16/9;">
                                     @if (!empty($stream->stream_url) && filter_var($stream->stream_url, FILTER_VALIDATE_URL))
                                         <iframe src="{{ $stream->stream_url }}" class="absolute inset-0 w-full h-full"
-                                            allowfullscreen
-                                            allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                                            allowfullscreen allow="encrypted-media; fullscreen; picture-in-picture"
                                             frameborder="0" loading="lazy">
                                         </iframe>
                                     @else
@@ -83,8 +83,10 @@
                                             class="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-900 to-black flex items-center justify-center">
                                             <div class="text-center p-6">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
-                                                    viewBox="0 0 24 24" fill="none" stroke="#FF8F20" stroke-width="1.5">
-                                                    <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+                                                    viewBox="0 0 24 24" fill="none" stroke="#FF8F20"
+                                                    stroke-width="1.5">
+                                                    <rect x="2" y="6" width="20" height="12" rx="2">
+                                                    </rect>
                                                     <path d="M8 12h8"></path>
                                                 </svg>
                                                 <p class="text-gray-400 text-sm mt-2">Stream unavailable</p>
@@ -148,8 +150,38 @@
                             </div>
                         @endforeach
                     </div>
-                @endempty
+                @endif
             </div>
         </section>
+
     </div>
+    <section class="py-16 px-4 mt-4 bg-[#000080]/80 rounded-2xl">
+        <div class="max-w-full mx-auto">
+            <h2 class="text-3xl font-bold text-[#FF8F20] mb-6">Previous Streams</h2>
+            @if ($assets)
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    @foreach ($assets as $asset)
+                        <div
+                            class="bg-black/40 backdrop-blur rounded-2xl overflow-hidden border border-white/20 hover:border-[#FF8F20] transition group">
+                            <div class="relative w-full" style="aspect-ratio: 16/9;">
+                                <video src="{{ $asset['playbackUrl'] ?? '#' }}" controls
+                                    class="absolute inset-0 w-full h-full"></video>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="text-lg font-bold text-white truncate flex-1">
+                                    {{-- {{ $asset['name'] ?? 'Untitled Stream' }} --}}
+                                </h3>
+                                @if (!empty($asset['description']))
+                                    <p class="text-sm text-gray-300 mb-1">
+                                        {{ $asset['description'] }}
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <p class="text-gray-400 text-center">No previous streams available.</p>
+            @endif
+    </section>
 </x-layouts.front-end.app>

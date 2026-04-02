@@ -23,42 +23,59 @@ class LiveStreamController extends Controller
         return view('layouts.backend.stream.create');
     }
     public function store(Request $request)
-    {
-        // Show form to create a new live stream
-        $data = $request->validate([
-            'title' => 'required|max:255',
-            'description' => 'required|max:255'
+{
+    // Validate the request data
+    $data = $request->validate([
+        'recording' => 'boolean',
+        'title' => 'required|max:255',
+        'description' => 'required|max:255'
+    ]);
+    
+    $stream_url_prefix = 'https://lvpr.tv?v=';
+    
+    // Create stream in Livepeer
+    $response = Http::withToken(env('LIVEPEER_API'))
+        ->post('https://livepeer.studio/api/stream', [
+            'name' => $data['title'],
+            'record' => $request->recording ? true : false,
         ]);
-        $stream_url_prefix = 'https://lvpr.tv?v=';
-        $response = Http::withToken(env('LIVEPEER_API'))
-            ->post('https://livepeer.studio/api/stream', [
-                'name' => $data['title'],
-                'record' => true,
-            ]);
-        $stream = json_decode($response, true);
-
-
-
-        $stream_url = $stream_url_prefix . $stream['playbackId'];
-        $stream_key = $stream['streamKey'];
-
-        $streams = LiveStream::all()->count();
-        $newStream = [
-            'title' => $data['title'],
-            'description' => $data['description'],
-            'stream_key' => $stream_key,
-            'stream_url' => $stream_url,
-            'stream_id' => $stream['id'],
-        ];
-        if ($streams < 1) {
-            $stream_data =  LiveStream::create($newStream);
-            return redirect()->route('dashboard.streams');
-        } else {
-            $stream_data = LiveStream::first()->get();
-            $stream_data->update($newStream);
-            return redirect()->route('dashboard.streams')->with('stream exists')->compact('stream_data');
-        }
+    
+    // Check if API request was successful
+    if (!$response->successful()) {
+        return back()->withErrors(['api_error' => 'Failed to create stream in Livepeer. Please try again.']);
     }
+    
+    $stream = $response->json();
+    
+    // Check if required fields exist in response
+    if (!isset($stream['playbackId']) || !isset($stream['streamKey']) || !isset($stream['id'])) {
+        return back()->withErrors(['api_error' => 'Invalid response from Livepeer API.']);
+    }
+    
+    $stream_url = $stream_url_prefix . $stream['playbackId'];
+    $stream_key = $stream['streamKey'];
+    
+    $newStream = [
+        'title' => $data['title'],
+        'description' => $data['description'],
+        'stream_key' => $stream_key,
+        'stream_url' => $stream_url,
+        'stream_id' => $stream['id'],
+    ];
+    
+    // Check if a stream already exists
+    $existingStream = LiveStream::first();
+    
+    if (!$existingStream) {
+        // Create new stream
+        $stream_data = LiveStream::create($newStream);
+        return redirect()->route('dashboard.streams')->with('success', 'Stream created successfully!');
+    } else {
+        // Update existing stream
+        $existingStream->update($newStream);
+        return redirect()->route('dashboard.streams')->with('success', 'Stream updated successfully!');
+    }
+}
     public function stop(LiveStream $stream)
     {
         // delete from the database as well
@@ -76,7 +93,8 @@ class LiveStreamController extends Controller
             echo "Error #:" . $response->status() . "\n";
             echo $response->body();
         } else {
-            $stream->delete();
+            $stream->status = 'ended';
+            $stream->save();
             return redirect()->route('dashboard.streams');
         }
     }

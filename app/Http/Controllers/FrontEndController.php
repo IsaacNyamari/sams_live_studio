@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\LiveStream;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class FrontEndController extends Controller
 {
@@ -27,8 +28,13 @@ class FrontEndController extends Controller
      */
     public function live()
     {
-        $streams = LiveStream::all();
-        return view('layouts.front-end.live', compact('streams'));
+        $response = Http::withToken(env('LIVEPEER_API'))
+            ->get('https://livepeer.studio/api/asset');
+
+        $assets = $response->json();
+        // dd($assets);
+        $streams = LiveStream::where('status', 'live')->get();
+        return view('layouts.front-end.live', compact('streams', 'assets'));
     }
 
     /**

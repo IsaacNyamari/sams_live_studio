@@ -1,3 +1,12 @@
+@section('description')
+    <meta name="description" content="Read the privacy policy of {{ config('app.name') }}. Learn how we collect, use, and protect your information when you use our live streaming services.">
+@endsection
+@section('keywords')
+    <meta name="keywords" content="Privacy Policy, {{ config('app.name') }}, data collection, information use, data protection, user privacy, live streaming services">
+@endsection
+@section('featured_image')
+    <meta property="og:image" content="{{ asset('images/privacy/confidential.jpg') }}" />
+@endsection
 <x-layouts.front-end.app>
     <div>
         <style>

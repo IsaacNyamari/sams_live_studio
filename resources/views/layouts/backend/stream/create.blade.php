@@ -28,9 +28,15 @@
                         @error('description')
                             <p class="form-text text-danger mt-1">{{ $message }}</p>
                         @enderror
+                        <div class="flex items-center mt-4">
+                            <input type="checkbox" name="recording" id="recording" class="mr-2">
+                            <label for="recording" class="text-sm text-gray-600 dark:text-gray-400">Record
+                                Stream</label>
+                        </div>
                         <div class='flex items-center justify-between'>
                             <button type='submit'
-                                class='my-3 bg-indigo-500 py-2 px-5 rounded text-white font-medium'>Create Stream</button>
+                                class='my-3 bg-indigo-500 py-2 px-5 rounded text-white font-medium'>Create
+                                Stream</button>
                         </div>
                     </form>
                 </div>

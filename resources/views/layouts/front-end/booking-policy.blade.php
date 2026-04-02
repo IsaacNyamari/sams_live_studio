@@ -1,3 +1,14 @@
+@section('description')
+    <meta name="description"
+        content="Read the booking policy for {{ config('app.name') }}. Understand the rules and guidelines for using our live production and streaming services.">
+@endsection
+@section('keywords')
+    <meta name="keywords"
+        content="Booking Policy, {{ config('app.name') }}, website usage, booking policy, user responsibilities, legal agreement">
+@endsection
+@section('featured_image')
+    <meta property="og:image" content="{{ asset('images/terms/terms.png') }}" />
+@endsection
 <x-layouts.front-end.app>
     <div>
         <style>
@@ -27,7 +38,8 @@
                         <!-- How to Book -->
                         <div>
                             <h2 class="text-2xl font-bold text-[#FF8F20] mb-4">How to Book</h2>
-                            <p class="text-gray-300 leading-relaxed mb-4">Booking studio time at {{ config('app.name') }}
+                            <p class="text-gray-300 leading-relaxed mb-4">Booking studio time at
+                                {{ config('app.name') }}
                                 is easy. Follow these steps:</p>
                             <ul class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
                                 <li>Contact us via phone, email, or our online booking form to check availability.</li>
@@ -232,7 +244,8 @@
                             <h2 class="text-2xl font-bold text-[#FF8F20] mb-4">Contact for Bookings</h2>
                             <p class="text-gray-300 leading-relaxed mb-2">For all booking inquiries, please contact:
                             </p>
-                            <p class="text-gray-300">📞 <span class="text-[#FF8F20]">{{ env('STUDIO_PHONE') }}</span></p>
+                            <p class="text-gray-300">📞 <span class="text-[#FF8F20]">{{ env('STUDIO_PHONE') }}</span>
+                            </p>
                             <p class="text-gray-300">📧 <span
                                     class="text-[#FF8F20]">bookings@samslivestudios.co.ke</span></p>
                             <p class="text-gray-300 mt-2">Office Hours: Monday - Friday, 9:00 AM - 6:00 PM</p>
