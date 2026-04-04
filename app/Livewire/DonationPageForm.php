@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Events\NotifyAdminOnDonation;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Livewire\Attributes\On;
@@ -67,7 +69,16 @@ class DonationPageForm extends Component
             'title' => 'Success',
             'text' => "Thanks " . Auth::user()->name . ". Your " . $payment->type()->first()->name . " was Successful!",
         ]);
+        $admin = User::role('admin')->first();
+
+        dd($admin);
         $this->dispatch('donationMade');
+        event(new NotifyAdminOnDonation([
+            'admin_id' => $admin->id,
+            'donor_name' => Auth::user()->name,
+            'amount' => $payment->amount,
+            'reference' => $payment->reference,
+        ]));
     }
     public function verifyPaystackTransaction(string $reference)
     {

@@ -47,7 +47,8 @@
                                         <p class="card-text">All: {{ $payments->count() }}</p>
                                     </div>
                                     <div class="card-footer">
-                                        <a class="btn btn-outline-info" href="{{ route('dashboard.payments') }}">View All</a>
+                                        <a class="btn btn-outline-info" href="{{ route('dashboard.payments') }}">View
+                                            All</a>
                                     </div>
                                 </div>
                             </div>

@@ -140,42 +140,70 @@
                 <!-- Contact Form -->
                 <div class="bg-black/40 backdrop-blur rounded-2xl p-8 border border-white/20">
                     <h2 class="text-2xl font-bold text-white mb-6">Send Us a Message</h2>
-                    <form action="#" method="POST" class="space-y-4">
+                    <form action="{{ route('contact-form.store') }}" method="POST" class="space-y-4">
+                        @csrf
                         <div>
                             <label for="name" class="block text-gray-300 mb-2">Full Name</label>
                             <input type="text" id="name" name="name"
                                 class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-[#FF8F20]">
+                            @error('name')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div>
                             <label for="email" class="block text-gray-300 mb-2">Email Address</label>
                             <input type="email" id="email" name="email"
                                 class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-[#FF8F20]">
+                            @error('email')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div>
                             <label for="phone" class="block text-gray-300 mb-2">Phone Number</label>
                             <input type="tel" id="phone" name="phone"
                                 class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-[#FF8F20]">
+                            @error('phone')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div>
                             <label for="service" class="block text-gray-300 mb-2">Service Interested In</label>
                             <select id="service" name="service"
-                                class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-[#FF8F20]">
+                                class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-black focus:outline-none focus:border-[#FF8F20]">
                                 <option value="live-production">Live Production</option>
                                 <option value="podcast-recording">Podcast Recording</option>
                                 <option value="music-recording">Music Recording</option>
                                 <option value="streaming">Streaming Services</option>
                                 <option value="other">Other</option>
                             </select>
+                            @error('service')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div>
                             <label for="message" class="block text-gray-300 mb-2">Message</label>
                             <textarea id="message" name="message" rows="4"
                                 class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-[#FF8F20]"></textarea>
+                            @error('message')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
                         <button type="submit"
                             class="w-full bg-[#FF8F20] hover:bg-[#FF8F20]/90 text-gray-900 font-semibold py-3 rounded-lg transition">Send
                             Message</button>
                     </form>
+
+                    @session('success')
+                        <div class="mt-4 p-4 bg-green-500 text-white rounded-lg">
+                            {{ session('success') }}
+                        </div>
+                    @endsession
+
+                    @session('error')
+                        <div class="mt-4 p-4 bg-red-500 text-white rounded-lg">
+                            {{ session('error') }}
+                        </div>
+                    @endsession
                 </div>
             </div>
         </section>

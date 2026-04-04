@@ -1,5 +1,8 @@
 <?php
 
+use Jeylabs\DotenvEditor\DotenvEditorServiceProvider;
+use Jeylabs\DotenvEditor\Facades\DotenvEditor;
+
 return [
 
     /*

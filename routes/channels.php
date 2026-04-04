@@ -8,3 +8,9 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 Broadcast::channel('initiate-payment', function ($user) {
     return $user->isAdmin() || $user->isClient();
 });
+Broadcast::channel('donation-notifications.{userId}', function ($user, $userId) {
+    return (int) $user->id === (int) $userId && $user->isAdmin();
+});
+Broadcast::channel('traffic-monitor', function () {
+    return true;
+});

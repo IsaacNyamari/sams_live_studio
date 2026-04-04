@@ -19,13 +19,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @livewireStyles
     {{-- <!-- Required for ALL timezone support -->
-    <script src='https://cdn.jsdelivr.net/npm/moment@2.29.4/min/moment.min.js'></script>
-    <script src='https://cdn.jsdelivr.net/npm/moment-timezone@0.5.40/builds/moment-timezone-with-data.min.js'></script>
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.20/index.global.min.js'></script>
-    <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/moment-timezone@6.1.20/index.global.min.js'></script> --}}
+        <script src='https://cdn.jsdelivr.net/npm/moment@2.29.4/min/moment.min.js'></script>
+        <script src='https://cdn.jsdelivr.net/npm/moment-timezone@0.5.40/builds/moment-timezone-with-data.min.js'></script>
+        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.20/index.global.min.js'></script>
+        <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/moment-timezone@6.1.20/index.global.min.js'></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         .card-header {
@@ -33,6 +31,8 @@
             color: white;
         }
     </style>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
 </head>
 
 <body class="dark:bg-[#000080]/80 bg-slate-100 text-black font-['Poppins']">
@@ -223,7 +223,25 @@
             }
         });
     </script>
-    <script>
+    <script type="module">
+        @hasrole('admin')
+            let userId = {{ Auth::user()->id }};
+            window.Echo.private('donation-notifications.' + userId)
+                .listen('.new-donation', (e) => {
+                    Swal.fire({
+                        title: 'New Donation Received!',
+                        text: `Donor: ${e.donor_name}\nAmount: KES ${e.amount}\nReference: ${e.reference}`,
+                        icon: 'success',
+                        confirmButtonText: 'View Details'
+                    })
+
+                    // .then((result) => {
+                    //     if (result.isConfirmed) {
+                    //         window.location.href = '/admin/donations';
+                    //     }
+                    // });
+                });
+        @endhasrole
         document.addEventListener('livewire:init', function() {
             Livewire.on('initializePayment', async (event) => {
                 if (event) {
@@ -262,15 +280,8 @@
                     handler.openIframe();
                 }
             });
-            window.Echo.channel('initiate-payment').listen('.payment.initiated', function(e) {
-                debugger;
-                // console.log('Payment event received:', e);
-                console.log(e);
 
-            });
-
-
-        })
+        });
     </script>
 </body>
 
