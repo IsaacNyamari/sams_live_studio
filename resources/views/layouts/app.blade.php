@@ -88,7 +88,7 @@
                 class="h-16 dark:bg-[#000080]/80 bg-[#F6F8FA] text-black border-b border-gray-200 flex items-center justify-between px-4 md:px-6">
                 <!-- Left Section - Mobile Menu Button -->
                 <div class="flex items-center gap-4">
-                    <button id="openSidebarBtn" class="lg:hidden text-white hover:text-[#FF8F20] transition">
+                    <button id="openSidebarBtn" class="lg:hidden dark:text-white hover:text-[#FF8F20] transition">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2">
                             <line x1="3" y1="12" x2="21" y2="12" />
@@ -300,6 +300,18 @@
                     'position': 'top-end',
                     'showConfirmButton': false,
                     'timer': 3000,
+                    'timerProgressBar': true
+                })
+            })
+            window.Echo.private('notifiy-admin-on-donation.' + userId).listen('.notifiy-admin-new-donation', (
+            e) => {
+                Swal.fire({
+                    'toast': true,
+                    'icon': 'success',
+                    'title': e.message,
+                    'position': 'top-end',
+                    'showConfirmButton': false,
+                    'timer': 6000,
                     'timerProgressBar': true
                 })
             })

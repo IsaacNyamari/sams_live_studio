@@ -13,7 +13,7 @@
                     </div>
                     <span class="dark:text-white font-semibold text-lg">{{ config('app.name') }}</span>
                 </div>
-                <button class="lg:hidden text-white hover:text-[#FF8F20] transition" id="closeSidebarBtn">
+                <button class="lg:hidden dark:text-white hover:text-[#FF8F20] transition" id="closeSidebarBtn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M18 6L6 18M6 6l12 12" />
@@ -73,16 +73,18 @@
                     </svg>
                     {{ __('Bookings') }}
                 </x-sidebar-links>
-                <x-sidebar-links :href="route('dashboard.user.payments', auth()->user()->id)" :active="request()->routeIs('dashboard.user.payments')">
-                    <i class="fa fa-dollar"width="20" height="20" viewBox="0 0 24 24"
-                        class="group-hover:text-[#FF8F20]"></i>
-                    <span>Payments</span>
-                </x-sidebar-links>
-                <x-sidebar-links :href="route('dashboard.payments.donate', auth()->user()->id)" :active="request()->routeIs('dashboard.payments.donate')">
-                    <i class="fa fa-dollar"width="20" height="20" viewBox="0 0 24 24"
-                        class="group-hover:text-[#FF8F20]"></i>
-                    <span>Donate</span>
-                </x-sidebar-links>
+                @if (Auth::user()->isClient())
+                    <x-sidebar-links :href="route('dashboard.user.payments', auth()->user()->id)" :active="request()->routeIs('dashboard.user.payments')">
+                        <i class="fa fa-dollar"width="20" height="20" viewBox="0 0 24 24"
+                            class="group-hover:text-[#FF8F20]"></i>
+                        <span>Payments</span>
+                    </x-sidebar-links>
+                    <x-sidebar-links :href="route('dashboard.payments.donate', auth()->user()->id)" :active="request()->routeIs('dashboard.payments.donate')">
+                        <i class="fa fa-dollar"width="20" height="20" viewBox="0 0 24 24"
+                            class="group-hover:text-[#FF8F20]"></i>
+                        <span>Donate</span>
+                    </x-sidebar-links>
+                @endif
                 <x-sidebar-links :href="route('profile')" :active="request()->routeIs('profile')">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="1.5" class="group-hover:text-[#FF8F20]">

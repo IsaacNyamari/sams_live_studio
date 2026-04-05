@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Events\RefreshUserPayments;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Livewire\Attributes\On;
@@ -47,11 +49,11 @@ class UserDonateFromDashboard extends Component
     public function paymentSuccess($reference)
     {
         $response = $this->verifyPayment($reference);
-
+        $admin = User::role('admin')->first();
         if ($response['data']['status'] === 'success') {
             // Handle successful payment here, e.g., save donation record to database
 
-            $this->user->payments()->create([
+            $donation = $this->user->payments()->create([
                 'payment_type' => 1,
                 'reference' => $reference,
                 'transaction_code' => $response['data']['receipt_number'],
@@ -70,6 +72,10 @@ class UserDonateFromDashboard extends Component
                 'timer' => 3000,
             ]);
             $this->reset();
+            $amount = $response['data']['amount'] / 100;
+            $message = Auth::user()->name.' has donated Kes. '.number_format($amount, 2).' '.$donation->created_at->diffForHumans();
+            $this->dispatch('refreshUserPayments', ['message' => $message]);
+            broadcast(new RefreshUserPayments($message, $admin));
         }
     }
 
