@@ -7,10 +7,11 @@ use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
-    public  $user;
+    public $user;
 
     public function __construct()
     {
@@ -22,6 +23,7 @@ class DashboardController extends Controller
         $users = $this->getAdminUsers();
         $bookings = $this->getAdminBookings();
         $payments = $this->Payments();
+
         return view('dashboard', compact('users', 'bookings', 'payments'));
     }
 
@@ -30,20 +32,24 @@ class DashboardController extends Controller
         if ($this->user->isClient()) {
             $bookings = $this->user->bookings()->orderBy('updated_at', 'asc')
                 ->get();
+
             return view('layouts.backend.bookings.index', compact('bookings'));
         } else {
 
             $bookings = Booking::whereNotIn('user_id', [$this->user->id])
                 ->orderBy('updated_at', 'asc')
                 ->get();
+
             return view('layouts.backend.bookings.index', compact('bookings'));
         }
     }
+
     public function clientBookings()
     {
         if ($this->user->isClient()) {
             $bookings = $this->user->bookings()->orderBy('updated_at', 'asc')
                 ->get();
+
             return view('layouts.backend.bookings.index', compact('bookings'));
         }
     }
@@ -63,10 +69,10 @@ class DashboardController extends Controller
     {
         return User::role('client')->get();
     }
+
     /**
      * get all bookings
      */
-
     public function getAdminBookings()
     {
         return Booking::whereNotIn('user_id', [$this->user->id])->get();
@@ -75,14 +81,19 @@ class DashboardController extends Controller
     /**
      * Get all Payments
      */
-
     public function Payments()
     {
-        return Payment::all();
+        if ($this->user->isAdmin()) {
+            return Payment::all();
+        } else {
+            return $this->user->payments()->get();
+        }
     }
+
     public function getAdminPayments()
     {
         $payments = Payment::all();
+
         return view('layouts.backend.payments.index', compact('payments'));
     }
 
@@ -121,5 +132,27 @@ class DashboardController extends Controller
     public function media()
     {
         return view('layouts.backend.media.index');
+    }
+
+    public function userPaymentApi()
+    {
+        $payments = DB::table('payments')
+            ->where('payable_id', Auth::id()) // Adjust based on your schema
+            ->selectRaw('DATE(created_at) as date, SUM(amount) as total, COUNT(*) as count')
+            ->groupBy('date')
+            ->orderBy('date', 'asc')
+            ->get();
+
+        return response()->json($payments);
+    }
+    public function userBookings()
+    {
+        $bookings = $this->user->bookings()->orderBy('updated_at', 'asc')
+            ->get();
+        return view('layouts.backend.bookings.index', compact('bookings'));
+    }
+    public function donateNow()
+    {
+        return view('layouts.backend.donate.index');
     }
 }

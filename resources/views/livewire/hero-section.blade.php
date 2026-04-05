@@ -65,7 +65,7 @@
         </div>
 
         <h1
-            class="text-4xl md:text-[64px]/[82px] text-[#FF8F20] text-center max-w-4xl mt-5 bg-clip-text leading-tight px-4">
+            class="text-4xl md:text-[64px]/[82px] text-[#FF8F20] text-center max-w-full mt-5 bg-clip-text leading-tight px-4">
             Professional Live Production & Broadcasting Studio
         </h1>
         <p class="text-sm md:text-base text-white bg-clip-text text-center max-w-lg mt-4.5 px-4">

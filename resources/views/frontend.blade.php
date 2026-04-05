@@ -32,7 +32,7 @@
     </style>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src='https://cdn.jsdelivr.net/npm/moment@2.29.4/min/moment.min.js'></script>
-
+    @livewireStyles
     <!-- Step 2: Timezone data (this enables ALL timezones) -->
     <script src='https://cdn.jsdelivr.net/npm/moment-timezone@0.5.40/builds/moment-timezone-with-data.min.js'></script>
 
@@ -53,7 +53,7 @@
     </main>
 
     <livewire:footer />
-
+    @livewireScripts
     <script>
         document.addEventListener('livewire:init', function() {
             Livewire.on('initializePayment', async (event) => {
@@ -93,4 +93,4 @@
         })
     </script>
     @yield('scripts')
-    {{-- <script 
+    {{-- <script

@@ -1,4 +1,4 @@
- <div class="max-w-4xl mx-auto text-center">
+ <div class="max-w-full mx-auto text-center">
        <div class="bg-black/40 backdrop-blur rounded-2xl p-8 border border-white/20">
          <h2 class="text-2xl font-bold text-white mb-4">Current Campaign Goal</h2>
          <p class="text-gray-300 mb-6">Help us acquire professional cinema cameras to elevate our production

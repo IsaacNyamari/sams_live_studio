@@ -41,10 +41,10 @@
                         </svg>
                         {{ __('Media') }}
                     </x-sidebar-links>
-                    <x-sidebar-links :href="route('dashboard.streams')" :active="request()->routeIs(['dashboard.streams','streams.create','streams.edit'])">
-            <i class="fa fa-video-camera group-hover:text-[#FF8F20]" fill="#FF8F20" x="0px" y="0px" width="20" height="20"
-                            >
-            </i>
+                    <x-sidebar-links :href="route('dashboard.streams')" :active="request()->routeIs(['dashboard.streams', 'streams.create', 'streams.edit'])">
+                        <i class="fa fa-video-camera group-hover:text-[#FF8F20]" fill="#FF8F20" x="0px" y="0px"
+                            width="20" height="20">
+                        </i>
                         {{ __('Streams') }}
                     </x-sidebar-links>
 
@@ -72,6 +72,16 @@
                         <line x1="3" y1="10" x2="21" y2="10" />
                     </svg>
                     {{ __('Bookings') }}
+                </x-sidebar-links>
+                <x-sidebar-links :href="route('dashboard.user.payments', auth()->user()->id)" :active="request()->routeIs('dashboard.user.payments')">
+                    <i class="fa fa-dollar"width="20" height="20" viewBox="0 0 24 24"
+                        class="group-hover:text-[#FF8F20]"></i>
+                    <span>Payments</span>
+                </x-sidebar-links>
+                <x-sidebar-links :href="route('dashboard.payments.donate', auth()->user()->id)" :active="request()->routeIs('dashboard.payments.donate')">
+                    <i class="fa fa-dollar"width="20" height="20" viewBox="0 0 24 24"
+                        class="group-hover:text-[#FF8F20]"></i>
+                    <span>Donate</span>
                 </x-sidebar-links>
                 <x-sidebar-links :href="route('profile')" :active="request()->routeIs('profile')">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"

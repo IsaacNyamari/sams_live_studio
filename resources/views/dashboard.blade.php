@@ -77,15 +77,95 @@
                                         <p class="card-text">All: {{ $payments->count() }}</p>
                                     </div>
                                     <div class="card-footer">
-                                        {{-- <a href="{{ route('') }}"></a> --}}
+                                        <a class="btn btn-outline-info" href="{{ route('dashboard.user.payments', auth()->user()->id) }}">View Aall</a>
                                     </div>
                                 </div>
                             </div>
                         @endhasrole
                     </div>
                 </div>
+                {{-- charts --}}
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card text-start">
+                                <div class="card-header">
+                                    <h3 class="card-title"><i class="fa fa-chart-bar" aria-hidden="true"></i> Donations
+                                        by Month</h3>
+                                    <canvas id="paymentsChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    </div>
+        <script type="module">
+            let payments = await fetch("{{ route('api.payments') }}")
+                .then(response => response.json())
+                .then(payments => {
+                    const ctx = document.getElementById('paymentsChart').getContext('2d');
+
+                    const paymentsChart = new Chart(ctx, {
+                        type: 'line', // or 'bar'
+                        data: {
+                            labels: payments.map(payment => payment.date),
+                            datasets: [{
+                                label: 'Total Payments (KES)',
+                                data: payments.map(payment => payment.total),
+                                backgroundColor: 'rgba(54, 10, 235, 0.2)',
+                                borderColor: 'rgba(54, 162, 235, 1)',
+                                borderWidth: 2,
+                                tension: 0.4,
+                                fill: false
+                            }, {
+                                label: 'Number of Transactions',
+                                data: payments.map(payment => payment.count),
+                                backgroundColor: 'rgba(125,19, 0, 0.2)',
+                                borderColor: 'rgba(255, 99, 132, 1)',
+                                borderWidth: 2,
+                                tension: 0.4,
+                                yAxisID: 'y1'
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            interaction: {
+                                mode: 'index',
+                                intersect: false,
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    position: 'left',
+                                    title: {
+                                        display: true,
+                                        text: 'Amount (KES)'
+                                    },
+                                    ticks: {
+                                        callback: function(value) {
+                                            return 'KES ' + value.toLocaleString();
+                                        }
+                                    }
+                                },
+                                y1: {
+                                    beginAtZero: true,
+                                    position: 'right',
+                                    title: {
+                                        display: true,
+                                        text: 'Number of Transactions'
+                                    },
+                                    grid: {
+                                        drawOnChartArea: true,
+                                    }
+                                }
+                            }
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching payments:', error);
+                });
+        </script>
+
 </x-app-layout>

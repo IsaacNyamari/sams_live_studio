@@ -16,6 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::role('client')->get();
+
         return view('users', compact('users'));
     }
 
@@ -34,6 +35,7 @@ class UserController extends Controller
     {
         //
     }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -48,9 +50,11 @@ class UserController extends Controller
 
         try {
             Mail::to($data['email'])->queue(new SendClientMail('', $data['subject'], $data['message'], $data['email']));
+
             return back()->with('success', 'Email queued successfully!');
         } catch (\Exception $e) {
-            Log::error('Failed to queue email: ' . $e->getMessage());
+            Log::error('Failed to queue email: '.$e->getMessage());
+
             return back()->with('error', 'Failed to queue email. Please try again.');
         }
     }
@@ -66,20 +70,21 @@ class UserController extends Controller
     /**
      * Get user payments
      */
-
     public function userPayments(User $user)
     {
         $payments = $user->payments()
-            ->get();
+            ->paginate(5);
+
         return view('layouts.backend.user.payments', compact('payments'));
     }
+
     /**
      * Get user bookings
      */
-
     public function userBookings(User $user)
     {
         $bookings = $user->bookings()->get();
+
         return view('layouts.backend.user.bookings', compact('bookings'));
     }
 

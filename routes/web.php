@@ -21,6 +21,7 @@ Route::get('/services', [FrontEndController::class, 'services'])->name('services
 Route::get('/contact', [FrontEndController::class, 'contact'])->name('contact');
 Route::get('/live', [FrontEndController::class, 'live'])->name('live');
 Route::get('/terms', [FrontEndController::class, 'terms'])->name('terms');
+Route::get('/privacy', [FrontEndController::class, 'privacy'])->name('privacy');
 Route::get('/booking-policy', [FrontEndController::class, 'bookingPolicy'])->name('booking-policy');
 Route::resource('/booking-page', FrontendBooking::class)->middleware('auth');
 Route::resource('/contact-form', ContactFormController::class);
@@ -30,19 +31,7 @@ Route::post('/logout', function () {
     return redirect('/');
 })->name('logout');
 
-Route::get('/env', function () {
-    // $newValue = "production"; // Replace with the new value you want to set
-    // $path = base_path('.env');
-    // if (file_exists($path)) {
-    //     file_put_contents($path, str_replace(
-    //         'KEY_NAME='.env('APP_ENV'),
-    //         'KEY_NAME='.$newValue,
-    //         file_get_contents($path)
-    //     ));
-    //     return env('APP_ENV');
-    // }
-});
-
+Route::get('/v1/payments', [DashboardController::class, 'userPaymentApi'])->name('api.payments')->middleware(['auth', 'verified']);
 Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
     Route::view('/profile', 'profile')->name('profile');
@@ -52,6 +41,7 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/bookings/{booking}/pay', [BookingController::class, 'initiatePayment'])->name('booking.initiatePayment')->middleware(['auth', 'verified']);
     Route::get('/sessions', [DashboardController::class, 'sessions'])->name('dashboard.sessions');
     Route::get('/payments', [DashboardController::class, 'getAdminPayments'])->name('dashboard.payments');
+    Route::get('/payments/donate', [DashboardController::class, 'donateNow'])->name('dashboard.payments.donate');
     Route::get('/users', [UserController::class, 'index'])->name('dashboard.users')->middleware(['auth']);
     Route::get('/users/{user}', [UserController::class, 'show'])->name('dashboard.users.show')->middleware(['auth']);
     Route::post('/users/{user}/send-mail', [UserController::class, 'sendMail'])->name('dashboard.users.sendMail')->middleware(['auth']);

@@ -70,10 +70,8 @@ class DonationPageForm extends Component
             'text' => "Thanks " . Auth::user()->name . ". Your " . $payment->type()->first()->name . " was Successful!",
         ]);
         $admin = User::role('admin')->first();
-
-        dd($admin);
         $this->dispatch('donationMade');
-        event(new NotifyAdminOnDonation([
+        broadcast(new NotifyAdminOnDonation([
             'admin_id' => $admin->id,
             'donor_name' => Auth::user()->name,
             'amount' => $payment->amount,

@@ -1,3 +1,5 @@
+@extends('frontend')
+@section('content')
 @section('description')
     <meta name="description"
         content="Explore our comprehensive live production and streaming services for events, conferences, and more.">
@@ -9,7 +11,6 @@
 @section('featured_image')
     <meta property="og:image" content="{{ asset('images/services/service.png') }}" />
 @endsection
-<x-layouts.front-end.app>
     <div>
         <style>
             @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
@@ -442,4 +443,4 @@
             </div>
         </section>
     </div>
-</x-layouts.front-end.app>
+@endsection

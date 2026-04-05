@@ -1,4 +1,5 @@
-<x-layouts.front-end.app>
+@extends('frontend')
+@section('content')
     @section('description')
         <meta name="description"
             content="Learn about {{ config('app.name') }}, Kenya's premier live production and streaming facility. Discover our story, mission, vision, leadership team, and state-of-the-art infrastructure that delivers world-class broadcast solutions across East Africa.">
@@ -229,4 +230,4 @@
             </div>
         </section>
     </div>
-</x-layouts.front-end.app>
+@endsection

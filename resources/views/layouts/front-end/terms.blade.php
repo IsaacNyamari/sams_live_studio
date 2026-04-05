@@ -8,7 +8,8 @@
 @section('featured_image')
     <meta property="og:image" content="{{ asset('images/terms/terms.png') }}" />
 @endsection
-<x-layouts.front-end.app>
+@extends('frontend')
+@section('content')
     <div>
         <style>
             @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
@@ -29,7 +30,7 @@
 
         <!-- Content -->
         <section class="py-16 px-4 bg-[#000080]/80">
-            <div class="max-w-4xl mx-auto">
+            <div class="max-w-full mx-auto">
                 <div class="bg-black/40 backdrop-blur rounded-2xl p-8 md:p-12 border border-white/20">
 
                     <div class="space-y-8">
@@ -78,8 +79,8 @@
                         <div>
                             <h2 class="text-2xl font-bold text-[#FF8F20] mb-4">Cancellation and Rescheduling</h2>
                             <div class="space-y-3">
-                                <p class="text-gray-300 leading-relaxed"><span
-                                        class="font-semibold text-white">Cancellation by Client:</span></p>
+                                <p class="text-gray-300 leading-relaxed"><span class="font-semibold text-white">Cancellation
+                                        by Client:</span></p>
                                 <ul class="list-disc list-inside text-gray-300 space-y-1 ml-4">
                                     <li>More than 7 days notice: Full refund of deposit</li>
                                     <li>48 hours to 7 days notice: 50% refund of deposit</li>
@@ -89,8 +90,8 @@
                                         class="font-semibold text-white">Rescheduling:</span> Sessions may be
                                     rescheduled with at least 48 hours notice at no additional charge. Rescheduling
                                     within 48 hours may incur a fee of 25% of the session cost.</p>
-                                <p class="text-gray-300 leading-relaxed"><span
-                                        class="font-semibold text-white">Cancellation by
+                                <p class="text-gray-300 leading-relaxed"><span class="font-semibold text-white">Cancellation
+                                        by
                                         {{ config('app.name') }}:</span> In the rare event we need to cancel a session
                                     due to technical issues or emergencies, we will provide a full refund or reschedule
                                     at no additional cost.</p>
@@ -104,12 +105,12 @@
                                 <p class="text-gray-300 leading-relaxed"><span class="font-semibold text-white">Setup
                                         Time:</span> Booked time includes setup and breakdown. Please arrive promptly to
                                     maximize your session time.</p>
-                                <p class="text-gray-300 leading-relaxed"><span
-                                        class="font-semibold text-white">Equipment Handling:</span> Clients are
+                                <p class="text-gray-300 leading-relaxed"><span class="font-semibold text-white">Equipment
+                                        Handling:</span> Clients are
                                     responsible for any damage to studio equipment caused by negligence or improper
                                     handling. Repair or replacement costs will be charged accordingly.</p>
-                                <p class="text-gray-300 leading-relaxed"><span
-                                        class="font-semibold text-white">Prohibited Content:</span> We reserve the right
+                                <p class="text-gray-300 leading-relaxed"><span class="font-semibold text-white">Prohibited
+                                        Content:</span> We reserve the right
                                     to refuse or terminate sessions involving illegal activities, hate speech, explicit
                                     violence, or content that violates Kenyan law.</p>
                                 <p class="text-gray-300 leading-relaxed"><span
@@ -202,14 +203,14 @@
                                 please contact us at:</p>
                             <p class="text-gray-300">{{ config('app.name') }}</p>
                             <p class="text-gray-300">Westlands, Nairobi, Kenya</p>
-                            <p class="text-gray-300">Email: <span
-                                    class="text-[#FF8F20]">legal@samslivestudios.co.ke</span></p>
-                            <p class="text-gray-300">Phone: <span
-                                    class="text-[#FF8F20]">{{ env('STUDIO_PHONE') }}</span></p>
+                            <p class="text-gray-300">Email: <span class="text-[#FF8F20]">legal@samslivestudios.co.ke</span>
+                            </p>
+                            <p class="text-gray-300">Phone: <span class="text-[#FF8F20]">{{ env('STUDIO_PHONE') }}</span>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </div>
-</x-layouts.front-end.app>
+@endsection

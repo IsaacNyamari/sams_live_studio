@@ -27,8 +27,8 @@ return new class extends Migration
 
             // Booking details
             $table->string('service_type');
-            $table->date('session_start');
-            $table->time('session_end');
+            $table->dateTime('session_start');
+            $table->dateTime('session_end');
             $table->integer('duration');
             $table->integer('participants')->default(1);
             $table->text('project_details')->nullable();

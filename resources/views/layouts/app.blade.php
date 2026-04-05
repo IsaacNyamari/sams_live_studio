@@ -24,6 +24,8 @@
         <script src='https://cdn.jsdelivr.net/npm/moment-timezone@0.5.40/builds/moment-timezone-with-data.min.js'></script>
         <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.20/index.global.min.js'></script>
         <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/moment-timezone@6.1.20/index.global.min.js'></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         .card-header {
@@ -164,6 +166,9 @@
 
     @livewireScripts
     @filemanagerScripts
+
+    <!-- Use this CDN (global version) -->
+
     <script>
         // Mobile sidebar functionality
         const sidebar = document.getElementById('sidebar');
@@ -223,25 +228,30 @@
             }
         });
     </script>
-    <script type="module">
+    <script>
         @hasrole('admin')
-            let userId = {{ Auth::user()->id }};
-            window.Echo.private('donation-notifications.' + userId)
-                .listen('.new-donation', (e) => {
-                    Swal.fire({
-                        title: 'New Donation Received!',
-                        text: `Donor: ${e.donor_name}\nAmount: KES ${e.amount}\nReference: ${e.reference}`,
-                        icon: 'success',
-                        confirmButtonText: 'View Details'
-                    })
+            document.addEventListener('DOMContentLoaded', function() {
+                let userId = {{ Auth::user()->id }};
+                window.Echo.private('donation-notifications.' + userId)
+                    .listen('.new-donation', (e) => {
+                        console.log(e.data);
+                        let data = e.data;
+                        Swal.fire({
+                            title: 'New Donation Received!',
+                            text: `Donor: ${data.donor_name}\nAmount: KES ${data.amount}\nReference: ${data.reference}`,
+                            icon: 'success',
+                            confirmButtonText: 'View Details'
+                        })
 
-                    // .then((result) => {
-                    //     if (result.isConfirmed) {
-                    //         window.location.href = '/admin/donations';
-                    //     }
-                    // });
-                });
+                        // .then((result) => {
+                        //     if (result.isConfirmed) {
+                        //         window.location.href = '/admin/donations';
+                        //     }
+                        // });
+                    });
+            });
         @endhasrole
+
         document.addEventListener('livewire:init', function() {
             Livewire.on('initializePayment', async (event) => {
                 if (event) {
@@ -280,7 +290,19 @@
                     handler.openIframe();
                 }
             });
-
+            let userId = {{ auth()->user()->id }};
+            window.Echo.private('user-booking-updates.' + userId).listen('.booking-status-updated', (e) => {
+                let status = e.status
+                Swal.fire({
+                    'toast': true,
+                    'icon': status === 'approved' ? 'success' : 'error',
+                    'title': e.message,
+                    'position': 'top-end',
+                    'showConfirmButton': false,
+                    'timer': 3000,
+                    'timerProgressBar': true
+                })
+            })
         });
     </script>
 </body>

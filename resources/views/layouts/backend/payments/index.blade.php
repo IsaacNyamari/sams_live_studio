@@ -13,6 +13,7 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
+                                    <th scope="col">Donor</th>
                                     <th scope="col">Reference</th>
                                     <th scope="col">Transaction Code</th>
                                     <th scope="col">Amount</th>
@@ -24,6 +25,7 @@
                             <tbody>
                                 @foreach ($payments as $payment)
                                     <tr class="">
+                                        <td>{{ $payment->user->name }}</td>
                                         <td>{{ $payment->reference }}</td>
                                         <td>{{ $payment->transaction_code }}</td>
                                         <td>{{ $payment->amount }}</td>
