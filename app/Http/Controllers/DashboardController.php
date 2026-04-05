@@ -92,7 +92,7 @@ class DashboardController extends Controller
 
     public function getAdminPayments()
     {
-        $payments = Payment::all();
+        $payments = Payment::paginate(5);
 
         return view('layouts.backend.payments.index', compact('payments'));
     }

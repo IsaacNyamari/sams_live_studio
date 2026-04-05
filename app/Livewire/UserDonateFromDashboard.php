@@ -3,9 +3,11 @@
 namespace App\Livewire;
 
 use App\Events\RefreshUserPayments;
+use App\Mail\NotifyAdminOnPayment;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use SweetAlert2\Laravel\Traits\WithSweetAlert;
@@ -75,6 +77,12 @@ class UserDonateFromDashboard extends Component
             $amount = $response['data']['amount'] / 100;
             $message = Auth::user()->name.' has donated Kes. '.number_format($amount, 2).' '.$donation->created_at->diffForHumans();
             $this->dispatch('refreshUserPayments', ['message' => $message]);
+            try {
+                Mail::to($admin->email)->send(new NotifyAdminOnPayment(Auth::user()->name, Auth::user()->email, $amount, $donation->created_at->toDayDateTimeString()));
+            } catch (\Exception $e) {
+                // Log the error or handle it as needed
+                dd($e);
+            }
             broadcast(new RefreshUserPayments($message, $admin));
         }
     }

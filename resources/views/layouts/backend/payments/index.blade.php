@@ -39,7 +39,7 @@
                             </tbody>
                         </table>
                     </div>
-
+                    {{ $payments->links() }}
                 </div>
             </div>
         </div>

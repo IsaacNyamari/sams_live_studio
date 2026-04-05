@@ -131,19 +131,19 @@
 
                         <!-- Dropdown Menu -->
                         <div id="userDropdown"
-                            class="absolute right-0 mt-2 w-48 dark:bg-[#000080]/80 bg-slate-100 text-black border border-white/80 rounded-lg shadow-lg hidden z-50">
+                            class="absolute right-0 mt-2 w-48 dark:bg-[#000080]/80 bg-slate-100 dark:text-white border border-white/80 rounded-lg shadow-lg hidden z-50">
                             <div class="py-2">
                                 <a href="{{ route('profile') }}"
-                                    class="block px-4 py-2 text-sm  dark:text-white text-black hover:text-[#FF8F20] hover:bg-white/5 transition">Profile</a>
+                                    class="block px-4 py-2 text-sm  dark:text-white hover:text-[#FF8F20] hover:bg-white/5 transition">Profile</a>
                                 <a href="#"
-                                    class="block px-4 py-2 text-sm  dark:text-white text-black hover:text-[#FF8F20] hover:bg-white/5 transition">Account
+                                    class="block px-4 py-2 text-sm  dark:text-white hover:text-[#FF8F20] hover:bg-white/5 transition">Account
                                     Settings</a>
                                 <div class="border-t border-white/80 my-1"></div>
 
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
                                     <button href="#"
-                                        class="block px-4 py-2 text-sm  dark:text-white text-black hover:text-[#FF8F20] hover:bg-white/5 transition">Logout</button>
+                                        class="block px-4 py-2 text-sm  dark:text-white hover:text-[#FF8F20] hover:bg-white/5 transition">Logout</button>
 
                                 </form>
                             </div>
@@ -304,7 +304,7 @@
                 })
             })
             window.Echo.private('notifiy-admin-on-donation.' + userId).listen('.notifiy-admin-new-donation', (
-            e) => {
+                e) => {
                 Swal.fire({
                     'toast': true,
                     'icon': 'success',
