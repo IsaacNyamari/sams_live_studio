@@ -33,8 +33,7 @@ class GalleryController extends Controller
             'description' => $data['description'],
             'image_path' => 'images/gallery/'.$file->getClientOriginalName(),
         ]);
-
-        dd('Gallery item created successfully');
+        return redirect()->route('dashboard.gallery')->with('success', 'Gallery item created successfully');
     }
 
     public function destroy(Request $request, $id)
@@ -46,6 +45,6 @@ class GalleryController extends Controller
         }
         $gallery->delete();
 
-        return redirect()->back()->with('success', 'Gallery item deleted successfully');
+        return redirect()->route('dashboard.gallery')->with('success', 'Gallery item deleted successfully');
     }
 }

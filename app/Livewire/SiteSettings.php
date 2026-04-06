@@ -57,8 +57,11 @@ class SiteSettings extends Component
 
     public $youtubeUrl;
 
-
     public $appLogo;
+
+    public $bookingSwitch;
+    public $livestreamSwitch;
+
     public function mount()
     {
         $this->appName = env('APP_NAME');
@@ -92,6 +95,9 @@ class SiteSettings extends Component
         $this->youtubeUrl = env('YOUTUBE_URL');
 
         $this->appLogo = env('APP_LOGO');
+
+        $this->bookingSwitch = env('BOOKING_SESSIONS');
+        $this->livestreamSwitch = env('LIVESTREAM_SWITCH');
     }
 
     public function render()
@@ -108,6 +114,8 @@ class SiteSettings extends Component
             'STUDIO_EMAIL' => "'{$this->studioEmail}'",
             'BOOKINGS_EMAIL' => "'{$this->bookingsEmail}'",
             'APP_LOGO' => "'{$this->appLogo}'",
+            'BOOKING_SESSIONS' => $this->bookingSwitch ? 'true' : 'false',
+            'LIVESTREAM_SWITCH' => $this->livestreamSwitch ? 'true' : 'false',
         ]);
 
         session()->flash('message', 'Settings updated successfully.');

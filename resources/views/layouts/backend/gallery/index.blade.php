@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-           Gallery
+            Gallery
         </h2>
     </x-slot>
 
@@ -9,10 +9,15 @@
         <div class="max-w-full mx-auto sm:px-2 lg:px-2">
             <div class="bg-white/50 dark:bg-[#000080]/80 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <section class="max-w-6xl mx-auto px-4 md:px-8 mb-10">
-                        <div class="flex"><h2 class="text-2xl font-semibold dark:text-white text-[#000080] mb-2 mt-4">Gallery</h2> <a href="{{ route('gallery.create') }}" class="ml-auto bg-[#FF8F20] hover:bg-[#FF8F20]/80 text-white py-2 px-4 rounded-lg transition duration-300">Add Gallery Item</a></div>
-                        <div class="grid md:grid-cols-3 gap-8">
-                            @foreach ($galleries as $gallery)
+                    <section class="max-w-full mx-auto px-4 md:px-8 mb-10">
+                        <div class="flex">
+                            <h2 class="text-2xl font-semibold dark:text-white text-[#000080] mb-2 mt-4">Gallery</h2> <a
+                                href="{{ route('gallery.create') }}"
+                                class="ml-auto bg-[#FF8F20] hover:bg-[#FF8F20]/80 text-white py-2 px-4 rounded-lg h-fit transition duration-300">Add
+                                Gallery Item</a>
+                        </div>
+                        <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
+                            @forelse ($galleries as $gallery)
                                 <div class="relative group cursor-pointer">
                                     <!-- Thumbnail with Aspect Ratio -->
                                     <div
@@ -53,7 +58,18 @@
                                         </form>
                                     </div>
                                 </div>
-                            @endforeach
+                            @empty
+                                {{-- nice message and interface --}}
+                                <div class="col-span-3 text-center py-20">
+                                    <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-4">No gallery
+                                        items found.</h3>
+                                    <p class="text-gray-500 dark:text-gray-400 mb-6">Start by adding a new gallery item
+                                        to showcase your work.</p>
+                                    <a href="{{ route('gallery.create') }}"
+                                        class="bg-[#FF8F20] hover:bg-[#FF8F20]/80 text-white py-2 px-4 rounded-lg transition duration-300">Add
+                                        Gallery Item</a>
+                                </div>
+                            @endforelse
                         </div>
 
                         <!-- Add this to your CSS or use Tailwind CDN for aspect ratio -->

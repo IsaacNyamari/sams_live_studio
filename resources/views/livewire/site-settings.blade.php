@@ -72,7 +72,8 @@
                 {{-- app logo with preview --}}
                 {{-- current logo --}}
                 <div class='w-full px-3'>
-                    <h5 class="block uppercase tracking-wide text-gray-700 dark:text-white text-xs font-bold mb-2">Current Logo</h5>
+                    <h5 class="block uppercase tracking-wide text-gray-700 dark:text-white text-xs font-bold mb-2">
+                        Current Logo</h5>
                     <img src="{{ asset(env('APP_LOGO')) }}" alt="App Logo" class="w-32 h-32 object-contain mb-4">
                     <label class='block uppercase tracking-wide text-gray-700 dark:text-white text-xs font-bold mb-2'
                         for='appLogo'>
@@ -84,6 +85,34 @@
                     @error('appLogo')
                         <p class='text-gray-600 text-xs italic'>{{ $message }}</p>
                     @enderror
+                </div>
+                {{-- booking switch --}}
+                <div class='w-full px-3'>
+                    <label class='block uppercase tracking-wide text-gray-700 dark:text-white text-xs font-bold mb-2'
+                        for='bookingSwitch'>
+                        Enable Booking Sessions
+                    </label>
+                    <div class="flex flex-row">
+                        <input class='' id='bookingSwitch' type='checkbox' wire:model.live='bookingSwitch'>
+                        <p class="ml-2 flex">{{ $bookingSwitch ? 'Disable' : 'Enable' }}</p>
+                        @error('bookingSwitch')
+                            <p class='text-gray-600 text-xs italic'>{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+                {{-- livestream switch --}}
+                <div class='w-full px-3'>
+                    <label class='block uppercase tracking-wide text-gray-700 dark:text-white text-xs font-bold mb-2'
+                        for='livestreamSwitch'>
+                        Enable Livestreaming
+                    </label>
+                    <div class="flex flex-row">
+                        <input class='' id='livestreamSwitch' type='checkbox' wire:model.live='livestreamSwitch'>
+                        <p class="ml-2 flex">{{ $livestreamSwitch ? 'Disable' : 'Enable' }}</p>
+                        @error('livestreamSwitch')
+                            <p class='text-gray-600 text-xs italic'>{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
             </div>
             <button class="btn btn-primary" type="submit">Save Site Settings</button>

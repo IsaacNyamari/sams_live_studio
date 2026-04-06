@@ -21,8 +21,13 @@
                 <x-nav-link :href="route('services')" :active="request()->routeIs('services')">
                     {{ __('Services') }}
                 </x-nav-link>
-                <x-nav-link :href="route('live')" :active="request()->routeIs('live')">
-                    {{ __('Live') }}
+                @if (env('LIVESTREAM_SWITCH'))
+                    <x-nav-link :href="route('live')" :active="request()->routeIs('live')">
+                        {{ __('Live') }}
+                    </x-nav-link>
+                @endif
+                <x-nav-link :href="route('academy')" :active="request()->routeIs('academy')">
+                    {{ __('Academy') }}
                 </x-nav-link>
                 <x-nav-link :href="route('donate')" :active="request()->routeIs('donate')">
                     {{ __('Donate') }}
@@ -70,8 +75,13 @@
                     <x-nav-link :href="route('services')" :active="request()->routeIs('services')">
                         {{ __('Services') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('live')" :active="request()->routeIs('live')">
-                        {{ __('Live') }}
+                    @if (env('LIVESTREAM_SWITCH'))
+                        <x-nav-link :href="route('live')" :active="request()->routeIs('live')">
+                            {{ __('Live') }}
+                        </x-nav-link>
+                    @endif
+                    <x-nav-link :href="route('academy')" :active="request()->routeIs('academy')">
+                        {{ __('Academy') }}
                     </x-nav-link>
                     <x-nav-link :href="route('donate')" :active="request()->routeIs('donate')">
                         {{ __('Donate') }}

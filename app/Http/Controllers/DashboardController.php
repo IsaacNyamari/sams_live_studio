@@ -136,21 +136,33 @@ class DashboardController extends Controller
 
     public function userPaymentApi()
     {
-        $payments = DB::table('payments')
-            ->where('payable_id', Auth::id()) // Adjust based on your schema
-            ->selectRaw('DATE(created_at) as date, SUM(amount) as total, COUNT(*) as count')
-            ->groupBy('date')
-            ->orderBy('date', 'asc')
-            ->get();
+        if ($this->user->isAdmin()) {
+            return response()->json(
+                Payment::selectRaw('DATE(created_at) as date, SUM(amount) as total, COUNT(*) as count')
+                    ->groupBy('date')
+                    ->orderBy('date', 'asc')
+                    ->get()
+            );
+        } else {
+            $payments = DB::table('payments')
+                ->where('payable_id', Auth::id()) // Adjust based on your schema
+                ->selectRaw('DATE(created_at) as date, SUM(amount) as total, COUNT(*) as count')
+                ->groupBy('date')
+                ->orderBy('date', 'asc')
+                ->get();
 
-        return response()->json($payments);
+            return response()->json($payments);
+        }
     }
+
     public function userBookings()
     {
         $bookings = $this->user->bookings()->orderBy('updated_at', 'asc')
             ->get();
+
         return view('layouts.backend.bookings.index', compact('bookings'));
     }
+
     public function donateNow()
     {
         return view('layouts.backend.donate.index');

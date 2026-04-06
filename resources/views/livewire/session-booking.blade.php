@@ -5,6 +5,35 @@
         * {
             font-family: "Poppins", sans-serif;
         }
+
+        /* Fix for SweetAlert overflow issues */
+        .swal2-popup {
+            padding: 1.5rem !important;
+        }
+
+        .swal2-html-container {
+            overflow-x: hidden !important;
+            padding: 0 !important;
+        }
+
+        .swal2-html-container input,
+        .swal2-html-container select,
+        .swal2-html-container textarea {
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        .booking-form-container {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .booking-form-container input,
+        .booking-form-container select,
+        .booking-form-container textarea {
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
     </style>
 
     <!-- Hero Section -->
@@ -102,14 +131,6 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M5 13l4 4L19 7" />
                                     </svg>
-                                    <span>Climate-controlled studio</span>
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <svg class="w-5 h-5 text-[#FF8F20]" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7" />
-                                    </svg>
                                     <span>Complimentary refreshments</span>
                                 </li>
                                 <li class="flex items-center gap-2">
@@ -139,14 +160,13 @@
     @else
         <section class="py-8 px-4 bg-[#000080]/80">
             <div class="max-w-6xl mx-auto justify-center items-center">
-                <svg class="text-white mx-auto mb-2" fill="#fff" xmlns="http://www.w3.org/2000/svg" width="100" height="100"
-                    viewBox="0 0 50 50">
-                    <path
-                        d="M 25 2 C 12.264481 2 2 12.264481 2 25 C 2 37.735519 12.264481
-                         48 25 48 C 37.735519 48 48 37.735519 48 25 C 48 12.264481 37.735519 2 25 2 z M 25 4 C 36.664481
-                          4 46 13.335519 46 25 C 46 36.664481 36.664481 46 25 46 C 13.335519 46 4 36.664481 4 25 C 4 13.335519 13.335519
-                           4 25 4 z M 25 11 A 3 3 0 0 0 25 17 A 3 3 0 0 0 25 11 z M 21 21 L 21 23 L 23 23 L 23 36 L 21 36 L 21 38 L 29 38
-                            L 29 36 L 27 36 L 27 21 L 21 21 z">
+                <svg class="text-white mx-auto mb-2" fill="#fff" xmlns="http://www.w3.org/2000/svg" width="100"
+                    height="100" viewBox="0 0 50 50">
+                    <path d="M 25 2 C 12.264481 2 2 12.264481 2 25 C 2 37.735519 12.264481
+                                 48 25 48 C 37.735519 48 48 37.735519 48 25 C 48 12.264481 37.735519 2 25 2 z M 25 4 C 36.664481
+                                  4 46 13.335519 46 25 C 46 36.664481 36.664481 46 25 46 C 13.335519 46 4 36.664481 4 25 C 4 13.335519 13.335519
+                                   4 25 4 z M 25 11 A 3 3 0 0 0 25 17 A 3 3 0 0 0 25 11 z M 21 21 L 21 23 L 23 23 L 23 36 L 21 36 L 21 38 L 29 38
+                                    L 29 36 L 27 36 L 27 21 L 21 21 z">
                     </path>
                 </svg>
                 <h1 class="text-white text-center text-3xl">
@@ -170,10 +190,10 @@
             </div>
         </div>
     </section>
-
+    
 </div>
 @script
-    <script>
+<script>
         document.addEventListener("livewire:initialized", () => {
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -220,28 +240,6 @@
                     const endHour = endDate.getHours();
                     const endMinute = endDate.getMinutes();
 
-                    // if (startHour < 6) {
-                    //     Swal.fire({
-                    //         title: 'Invalid Start Time',
-                    //         text: 'Bookings must start at or after 6:00 AM.',
-                    //         icon: 'error',
-                    //         confirmButtonText: 'OK',
-                    //         confirmButtonColor: '#FF8F20'
-                    //     });
-                    //     return false;
-                    // }
-
-                    // if (endHour > 21 || (endHour === 21 && endMinute > 0)) {
-                    //     Swal.fire({
-                    //         title: 'Invalid End Time',
-                    //         text: 'Bookings must end by 9:00 PM.',
-                    //         icon: 'error',
-                    //         confirmButtonText: 'OK',
-                    //         confirmButtonColor: '#FF8F20'
-                    //     });
-                    //     return false;
-                    // }
-
                     // VALIDATION 3: Check duration (max 15 hours)
                     const durationHours = (endDate - startDate) / (1000 * 60 * 60);
                     if (durationHours > 15) {
@@ -276,11 +274,11 @@
                         timeZone: nairobiTimezone
                     });
 
-                    // Show simplified booking form
+                    // Show simplified booking form with fixed styling
                     Swal.fire({
                         title: 'Book a Studio Session',
                         html: `
-                            <div class="text-left">
+                            <div class="booking-form-container" style="max-width: 100%; overflow-x: hidden;">
                                 <div class="mb-4 p-3 bg-gray-100 rounded-lg">
                                     <p class="text-sm text-gray-600"><strong>Selected Date:</strong> ${formattedDate}</p>
                                     <p class="text-sm text-gray-600"><strong>Time Slot:</strong> ${startTime} - ${endTime}</p>
@@ -289,7 +287,7 @@
                                 
                                 <div class="mb-3">
                                     <label class="block text-sm font-semibold text-gray-700 mb-1">Session Type *</label>
-                                    <select id="sessionType" class="swal2-select w-full" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #d1d5db;">
+                                    <select id="sessionType" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #d1d5db; box-sizing: border-box;">
                                         <option value="">Select session type</option>
                                         <option value="live_production">🎥 Live Production</option>
                                         <option value="broadcast">📺 Broadcast Services</option>
@@ -301,16 +299,16 @@
                                 
                                 <div class="mb-3">
                                     <label class="block text-sm font-semibold text-gray-700 mb-1">Number of Participants</label>
-                                    <input type="number" id="participants" class="swal2-input w-full" value="1" min="1" max="20" style="width: 100%;">
+                                    <input type="number" id="participants" value="1" min="1" max="20" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #d1d5db; box-sizing: border-box;">
                                 </div>
                                 
                                 <div class="mb-3">
                                     <label class="block text-sm font-semibold text-gray-700 mb-1">Project Details</label>
-                                    <textarea id="projectDetails" class="swal2-textarea w-full" rows="3" placeholder="Tell us about your project, goals, and any special requirements..." style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #d1d5db;"></textarea>
+                                    <textarea id="projectDetails" rows="3" placeholder="Tell us about your project, goals, and any special requirements..." style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #d1d5db; box-sizing: border-box; resize: vertical;"></textarea>
                                 </div>
                             </div>
                         `,
-                        width: '600px',
+                        width: '550px',
                         showCancelButton: true,
                         confirmButtonText: 'Submit Booking Request',
                         cancelButtonText: 'Cancel',
@@ -430,11 +428,11 @@
                                     </div>
                                     
                                     ${event.extendedProps.project_details ? `
-                                                                            <div class="mb-3">
-                                                                                <p class="text-sm font-semibold text-gray-700 mb-1">📝 Project Details</p>
-                                                                                <p class="text-sm text-gray-600">${event.extendedProps.project_details}</p>
-                                                                            </div>
-                                                                        ` : ''}
+                                                                                                                <div class="mb-3">
+                                                                                                                    <p class="text-sm font-semibold text-gray-700 mb-1">📝 Project Details</p>
+                                                                                                                    <p class="text-sm text-gray-600">${event.extendedProps.project_details}</p>
+                                                                                                                </div>
+                                                                                                            ` : ''}
                                 </div>
                             `,
                             width: '600px',
