@@ -10,7 +10,7 @@
             <div class="bg-white/50 dark:bg-[#000080]/80 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <section class="max-w-6xl mx-auto px-4 md:px-8 mb-10">
-                        <h2 class="text-2xl font-semibold dark:text-white text-[#000080] mb-2 mt-4">Gallery</h2>
+                        <div class="flex"><h2 class="text-2xl font-semibold dark:text-white text-[#000080] mb-2 mt-4">Gallery</h2> <a href="{{ route('gallery.create') }}" class="ml-auto bg-[#FF8F20] hover:bg-[#FF8F20]/80 text-white py-2 px-4 rounded-lg transition duration-300">Add Gallery Item</a></div>
                         <div class="grid md:grid-cols-3 gap-8">
                             @foreach ($galleries as $gallery)
                                 <div class="relative group cursor-pointer">
