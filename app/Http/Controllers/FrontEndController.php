@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\LiveStream;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class FrontEndController extends Controller
@@ -23,6 +22,7 @@ class FrontEndController extends Controller
     {
         return view('layouts.front-end.about');
     }
+
     /**
      * About page
      */
@@ -34,6 +34,7 @@ class FrontEndController extends Controller
         $assets = $response->json();
         // dd($assets);
         $streams = LiveStream::where('status', 'live')->get();
+
         return view('layouts.front-end.live', compact('streams', 'assets'));
     }
 
@@ -50,7 +51,7 @@ class FrontEndController extends Controller
      */
     public function contact()
     {
-        return view("layouts.front-end.contact");
+        return view('layouts.front-end.contact');
     }
 
     /**
@@ -76,8 +77,14 @@ class FrontEndController extends Controller
     {
         return view('layouts.front-end.booking-policy');
     }
+
     public function privacy()
     {
         return view('layouts.front-end.privacy-policy');
+    }
+
+    public function academy()
+    {
+        return view('layouts.front-end.academy');
     }
 }

@@ -32,7 +32,7 @@
                 </x-sidebar-links>
 
                 @if (Auth::user()->isAdmin())
-                    <x-sidebar-links :href="route('dashboard.media')" :active="request()->routeIs('dashboard.media')">
+                    <x-sidebar-links :href="route('dashboard.gallery')" :active="request()->routeIs('dashboard.gallery')">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20"
                             viewBox="0 0 50 50" class="group-hover:text-[#FF8F20]" fill="#FF8F20">
                             <path
