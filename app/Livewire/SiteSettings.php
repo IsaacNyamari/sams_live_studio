@@ -47,6 +47,18 @@ class SiteSettings extends Component
     public $bookingsEmail;
 
     public $livePeerApiKey;
+
+    // social media links
+    public $facebookUrl;
+
+    public $tiktokUrl;
+
+    public $instagramUrl;
+
+    public $youtubeUrl;
+
+
+    public $appLogo;
     public function mount()
     {
         $this->appName = env('APP_NAME');
@@ -72,6 +84,14 @@ class SiteSettings extends Component
         $this->paystackMerchantUrl = env('PAYSTACK_PAYMENT_URL');
 
         $this->livePeerApiKey = env('LIVEPEER_API');
+
+        // social media links
+        $this->facebookUrl = env('FACEBOOK_URL');
+        $this->tiktokUrl = env('TIKTOK_URL');
+        $this->instagramUrl = env('INSTAGRAM_URL');
+        $this->youtubeUrl = env('YOUTUBE_URL');
+
+        $this->appLogo = env('APP_LOGO');
     }
 
     public function render()
@@ -87,10 +107,12 @@ class SiteSettings extends Component
             'STUDIO_PHONE_ALT' => "'{$this->studioPhoneAlt}'",
             'STUDIO_EMAIL' => "'{$this->studioEmail}'",
             'BOOKINGS_EMAIL' => "'{$this->bookingsEmail}'",
+            'APP_LOGO' => "'{$this->appLogo}'",
         ]);
 
         session()->flash('message', 'Settings updated successfully.');
     }
+
     public function savePusherSettings()
     {
         batchEnvUpdate([
@@ -103,6 +125,7 @@ class SiteSettings extends Component
 
         session()->flash('message', 'Pusher settings updated successfully.');
     }
+
     public function savePaystackSettings()
     {
         batchEnvUpdate([
@@ -113,6 +136,7 @@ class SiteSettings extends Component
 
         session()->flash('message', 'Paystack settings updated successfully.');
     }
+
     public function saveContactSettings()
     {
         batchEnvUpdate([
@@ -124,6 +148,7 @@ class SiteSettings extends Component
 
         session()->flash('message', 'Contact settings updated successfully.');
     }
+
     public function saveMailSettings()
     {
         batchEnvUpdate([
@@ -136,6 +161,7 @@ class SiteSettings extends Component
 
         session()->flash('message', 'Mail settings updated successfully.');
     }
+
     public function saveLivePeerSettings()
     {
         batchEnvUpdate([
@@ -143,5 +169,17 @@ class SiteSettings extends Component
         ]);
 
         session()->flash('message', 'LivePeer settings updated successfully.');
+    }
+
+    public function saveSocialSettings()
+    {
+        batchEnvUpdate([
+            'FACEBOOK_URL' => "'{$this->facebookUrl}'",
+            'TIKTOK_URL' => "'{$this->tiktokUrl}'",
+            'INSTAGRAM_URL' => "'{$this->instagramUrl}'",
+            'YOUTUBE_URL' => "'{$this->youtubeUrl}'",
+        ]);
+
+        session()->flash('message', 'Social media settings updated successfully.');
     }
 }

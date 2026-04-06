@@ -1,4 +1,10 @@
 <div>
+    @session('message')
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">Success! </strong>
+            <span class="block sm:inline">{{ session('message') }}</span>
+        </div>
+    @endsession
     <div class="grid grid-flow-row lg:grid-cols-2 md:grid-cols-1 gap-4">
         <form class='w-full max-w-full' wire:submit.prevent='saveSiteSettings'>
             <h3 class="text-center mb-3">Site Settings</h3>
@@ -63,7 +69,22 @@
                         <p class='text-gray-600 text-xs italic'>{{ $message }}</p>
                     @enderror
                 </div>
-
+                {{-- app logo with preview --}}
+                {{-- current logo --}}
+                <div class='w-full px-3'>
+                    <h5 class="block uppercase tracking-wide text-gray-700 dark:text-white text-xs font-bold mb-2">Current Logo</h5>
+                    <img src="{{ asset(env('APP_LOGO')) }}" alt="App Logo" class="w-32 h-32 object-contain mb-4">
+                    <label class='block uppercase tracking-wide text-gray-700 dark:text-white text-xs font-bold mb-2'
+                        for='appLogo'>
+                        App Logo URL
+                    </label>
+                    <input
+                        class='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                        id='appLogo' type='text' wire:model='appLogo'>
+                    @error('appLogo')
+                        <p class='text-gray-600 text-xs italic'>{{ $message }}</p>
+                    @enderror
+                </div>
             </div>
             <button class="btn btn-primary" type="submit">Save Site Settings</button>
         </form>
@@ -252,7 +273,7 @@
     </div>
     <div class="grid grid-flow-row lg:grid-cols-2 md:grid-cols-1 gap-4 mt-5">
         {{-- livepeer settings --}}
-        <form class="w-full max-w-full" wire:submit.prevent='saveLivePeerSettings'>
+        <form class="w-full max-w-full order-1" wire:submit.prevent='saveLivePeerSettings'>
             <h3 class="text-center mb-3">LivePeer Settings</h3>
             <div class='flex flex-wrap -mx-3 mb-6'>
                 <div class='w-full px-3'>
@@ -269,6 +290,61 @@
                 </div>
             </div>
             <button class="btn btn-primary" type="submit">Save LivePeer Settings</button>
+        </form>
+        {{-- social settings --}}
+        <form class="w-full max-w-full order-0" wire:submit.prevent='saveSocialSettings'>
+            <h3 class="text-center mb-3">Social Settings</h3>
+            <div class='flex flex-wrap -mx-3 mb-6'>
+                <div class='w-full px-3'>
+                    <label class='block uppercase tracking-wide text-gray-700 dark:text-white text-xs font-bold mb-2'
+                        for='facebookUrl'>
+                        Facebook URL
+                    </label>
+                    <input
+                        class='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                        id='facebookUrl' type='text' wire:model='facebookUrl'>
+                    @error('facebookUrl')
+                        <p class='text-gray-600 text-xs italic'>{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class='w-full px-3'>
+                    <label class='block uppercase tracking-wide text-gray-700 dark:text-white text-xs font-bold mb-2'
+                        for='tiktokUrl'>
+                        TikTok URL
+                    </label>
+                    <input
+                        class='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                        id='tiktokUrl' type='text' wire:model='tiktokUrl'>
+                    @error('tiktokUrl')
+                        <p class='text-gray-600 text-xs italic'>{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class='w-full px-3'>
+                    <label class='block uppercase tracking-wide text-gray-700 dark:text-white text-xs font-bold mb-2'
+                        for='instagramUrl'>
+                        Instagram URL
+                    </label>
+                    <input
+                        class='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                        id='instagramUrl' type='text' wire:model='instagramUrl'>
+                    @error('instagramUrl')
+                        <p class='text-gray-600 text-xs italic'>{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class='w-full px-3'>
+                    <label class='block uppercase tracking-wide text-gray-700 dark:text-white text-xs font-bold mb-2'
+                        for='youtubeUrl'>
+                        YouTube URL
+                    </label>
+                    <input
+                        class='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                        id='youtubeUrl' type='text' wire:model='youtubeUrl'>
+                    @error('youtubeUrl')
+                        <p class='text-gray-600 text-xs italic'>{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Save Social Settings</button>
         </form>
     </div>
 </div>

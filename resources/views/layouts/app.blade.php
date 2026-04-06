@@ -35,6 +35,7 @@
     </style>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
+    @filemanagerStyles
 </head>
 
 <body class="dark:bg-[#000080]/80 bg-slate-100 text-black font-['Poppins']">

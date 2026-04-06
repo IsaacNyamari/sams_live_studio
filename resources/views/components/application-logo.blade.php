@@ -1,1 +1,1 @@
-<img src="{{ asset('images/logos/sams_logo.png') }}" alt="" {{ $attributes }}>
+<img src="{{ asset(env('APP_LOGO')) }}" alt="" {{ $attributes }}>
