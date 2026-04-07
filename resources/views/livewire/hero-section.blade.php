@@ -54,7 +54,7 @@
         <div
             class="rainbow relative z-0 bg-white/15 overflow-hidden p-px flex items-center justify-center rounded-full transition duration-300 active:scale-100 mt-28 md:mt-32 pointer-events-none">
             <button
-                class="flex items-center justify-center gap-3 pl-4 pr-6 py-3 text-white rounded-full font-medium bg-[#000080]/80 backdrop-blur pointer-events-auto">
+                class="flex items-center justify-center gap-3 pl-4 pr-6 py-3 text-white rounded-full font-medium bg-[#021F59] backdrop-blur pointer-events-auto">
                 <div class="relative flex size-3.5 items-center justify-center">
                     <span
                         class="absolute inline-flex h-full w-full rounded-full bg-[#FF8F20] opacity-75 animate-ping duration-300"></span>

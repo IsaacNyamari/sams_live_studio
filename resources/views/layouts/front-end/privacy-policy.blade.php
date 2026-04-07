@@ -23,7 +23,7 @@
 
     <!-- Hero Section -->
     <section
-        class="bg-[#000080]/80 mt-2 mb-5 rounded-2xl bg-[url(https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1170&auto=format&fit=crop)] bg-blend-overlay bg-no-repeat bg-cover py-20 px-4 md:px-8">
+        class="bg-[#021F59] mt-2 mb-5 rounded-2xl bg-[url(https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1170&auto=format&fit=crop)] bg-blend-overlay bg-no-repeat bg-cover py-20 px-4 md:px-8">
         <div class="max-w-6xl mx-auto text-center">
             <h1 class="text-4xl md:text-5xl font-bold text-[#FF8F20] mb-4">Privacy Policy</h1>
             <p class="text-white text-lg max-w-3xl mx-auto">Last updated: {{ date('F j, Y') }}</p>
@@ -31,7 +31,7 @@
     </section>
 
     <!-- Content -->
-    <section class="py-16 px-4 bg-[#000080]/80">
+    <section class="py-16 px-4 bg-[#021F59]">
         <div class="max-w-full mx-auto">
             <div class="bg-black/40 backdrop-blur rounded-2xl p-8 md:p-12 border border-white/20">
 

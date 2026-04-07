@@ -7,12 +7,13 @@ use App\Http\Controllers\FrontendBooking;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\LiveStreamController;
+use App\Http\Controllers\PortforlioController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SiteSettingsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use LivewireFilemanager\Filemanager\Http\Controllers\Api\FileController;
-
 
 Route::get('/files/{$path}', [FileController::class, 'show'])
     ->where('path', '.*')
@@ -44,19 +45,30 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/bookings', [BookingController::class, 'index'])->name('bookings')->middleware(['auth', 'verified']);
     Route::get('/bookings/client', [DashboardController::class, 'clientBookings'])->name('client.bookings')->middleware(['auth', 'verified']);
     Route::post('/bookings/{booking}/pay', [BookingController::class, 'initiatePayment'])->name('booking.initiatePayment')->middleware(['auth', 'verified']);
-    Route::get('/sessions', [DashboardController::class, 'sessions'])->name('dashboard.sessions');
-    Route::get('/payments', [DashboardController::class, 'getAdminPayments'])->name('dashboard.payments');
-    Route::get('/payments/donate', [DashboardController::class, 'donateNow'])->name('dashboard.payments.donate');
-    Route::get('/users', [UserController::class, 'index'])->name('dashboard.users')->middleware(['auth']);
-    Route::get('/users/{user}', [UserController::class, 'show'])->name('dashboard.users.show')->middleware(['auth']);
-    Route::post('/users/{user}/send-mail', [UserController::class, 'sendMail'])->name('dashboard.users.sendMail')->middleware(['auth']);
-    Route::get('/users/{user}/payments', [UserController::class, 'userPayments'])->name('dashboard.user.payments')->middleware(['auth']);
-    Route::get('/users/{user}/bookings', [UserController::class, 'userBookings'])->name('dashboard.user.bookings')->middleware(['auth']);
-    Route::get('/media', [DashboardController::class, 'media'])->name('dashboard.media')->middleware(['auth']);
-    Route::resource('/gallery', GalleryController::class)->middleware(['auth']);
-    Route::get('/gallery', [GalleryController::class, 'index'])->name('dashboard.gallery')->middleware(['auth']);
-    Route::resource('/streams', LiveStreamController::class)->middleware(['auth']);
-    Route::get('/streams', [LiveStreamController::class, 'index'])->name('dashboard.streams')->middleware(['auth']);
-    Route::post('/streams/{stream}/end', [LiveStreamController::class, 'stop'])->name('dashboard.streams.end')->middleware(['auth']);
+    Route::get('/sessions', [DashboardController::class, 'sessions'])->name('dashboard.sessions')->middleware(['auth', 'verified']);
+    Route::get('/payments', [DashboardController::class, 'getAdminPayments'])->name('dashboard.payments')->middleware(['auth', 'verified']);
+    Route::get('/payments/donate', [DashboardController::class, 'donateNow'])->name('dashboard.payments.donate')->middleware(['auth', 'verified']);
+    Route::get('/users', [UserController::class, 'index'])->name('dashboard.users')->middleware(['auth', 'verified']);
+    Route::get('/users/{user}', [UserController::class, 'show'])->name('dashboard.users.show')->middleware(['auth', 'verified']);
+    Route::post('/users/{user}/send-mail', [UserController::class, 'sendMail'])->name('dashboard.users.sendMail')->middleware(['auth', 'verified']);
+    Route::get('/users/{user}/payments', [UserController::class, 'userPayments'])->name('dashboard.user.payments')->middleware(['auth', 'verified']);
+    Route::get('/users/{user}/bookings', [UserController::class, 'userBookings'])->name('dashboard.user.bookings')->middleware(['auth', 'verified']);
+    Route::get('/media', [DashboardController::class, 'media'])->name('dashboard.media')->middleware(['auth', 'verified']);
+    Route::resource('/gallery', GalleryController::class)->middleware(['auth', 'verified']);
+    Route::get('/gallery', [GalleryController::class, 'index'])->name('dashboard.gallery')->middleware(['auth', 'verified']);
+    Route::resource('/portfolio', PortforlioController::class)->middleware(['auth', 'verified']);
+    Route::get('/dashboard/services', [ServiceController::class,'index'])->name('dashboard.service')->middleware(['auth', 'verified']);
+    Route::resource('/services', ServiceController::class)->middleware(['auth', 'verified']);
+    Route::get('/portfolio', [PortforlioController::class, 'index'])->name('dashboard.portfolio')->middleware(['auth', 'verified']);
+    Route::resource('/streams', LiveStreamController::class)->middleware(['auth', 'verified']);
+    Route::get('/streams', [LiveStreamController::class, 'index'])->name('dashboard.streams')->middleware(['auth', 'verified']);
+    Route::post('/streams/{stream}/end', [LiveStreamController::class, 'stop'])->name('dashboard.streams.end')->middleware(['auth', 'verified']);
 })->middleware(['auth', 'verified']);
+
+Route::get('image/', function () {
+    return view('image');
+})->name('image');
+Route::get('new-look/', function () {
+    return view('new-look');
+})->name('new-look');
 require __DIR__.'/auth.php';

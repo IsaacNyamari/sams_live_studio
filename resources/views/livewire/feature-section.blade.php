@@ -8,7 +8,7 @@
     </style>
 
     <section 
-        class="py-20 px-4 bg-[#000080]/80 flex flex-col justify-center items-center gap-6 rounded-2xl
+        class="py-20 px-4 bg-[#021F59] flex flex-col justify-center items-center gap-6 rounded-2xl
     bg-[url(https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)]
     bg-blend-overlay
     ">

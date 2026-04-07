@@ -7,7 +7,7 @@
         }
     </style>
 
-    <footer class="bg-[#000080]/80 text-gray-300">
+    <footer class="bg-[#021F59] text-gray-300">
         <!-- Main Footer Content -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
             <!-- Grid Layout -->

@@ -23,7 +23,7 @@
 
     <!-- Hero Section -->
     <section
-        class="bg-[#000080]/80 mt-2 mb-5 rounded-2xl bg-[url(https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0)] bg-blend-overlay bg-no-repeat bg-cover py-20 px-4 md:px-8">
+        class="bg-[#021F59] mt-2 mb-5 rounded-2xl bg-[url(https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0)] bg-blend-overlay bg-no-repeat bg-cover py-20 px-4 md:px-8">
         <div class="max-w-7xl mx-auto text-center">
             <h1 class="text-4xl md:text-5xl font-bold text-[#FF8F20] mb-4">Join {{ config('app.name') }} Academy</h1>
             <p class="text-white text-lg max-w-3xl mx-auto">Transform your passion into a profession with East Africa's premier live production and streaming academy.</p>

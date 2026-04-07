@@ -38,7 +38,7 @@
 
     <!-- Hero Section -->
     <section
-        class="bg-[#000080]/80 mt-2 mb-5 rounded-2xl bg-[url(https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1170&auto=format&fit=crop)] bg-blend-overlay bg-no-repeat bg-cover py-16 px-4 md:px-8">
+        class="bg-[#021F59] mt-2 mb-5 rounded-2xl bg-[url(https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1170&auto=format&fit=crop)] bg-blend-overlay bg-no-repeat bg-cover py-16 px-4 md:px-8">
         <div class="max-w-6xl mx-auto text-center">
             <h1 class="text-4xl md:text-5xl font-bold text-[#FF8F20] mb-4">Book a Session</h1>
             <p class="text-white text-lg max-w-3xl mx-auto">Reserve your studio time and bring your vision to life
@@ -47,7 +47,7 @@
     </section>
     @if (env('BOOKING_SESSIONS'))
         <!-- Booking Form Section -->
-        <section class="py-16 px-4 bg-[#000080]/80">
+        <section class="py-16 px-4 bg-[#021F59]">
             <div class="max-w-6xl mx-auto">
                 <div class="grid md:grid-cols-3 gap-8">
                     <!-- Booking Form -->
@@ -158,7 +158,7 @@
             </div>
         </section>
     @else
-        <section class="py-8 px-4 bg-[#000080]/80">
+        <section class="py-8 px-4 bg-[#021F59]">
             <div class="max-w-6xl mx-auto justify-center items-center">
                 <svg class="text-white mx-auto mb-2" fill="#fff" xmlns="http://www.w3.org/2000/svg" width="100"
                     height="100" viewBox="0 0 50 50">
@@ -176,7 +176,7 @@
         </section>
     @endif
     <!-- Cancellation Policy Notice -->
-    <section class="py-8 px-4 bg-[#000080]/80">
+    <section class="py-8 px-4 bg-[#021F59]">
         <div class="max-w-6xl mx-auto">
             <div class="bg-[#FF8F20]/10 border border-[#FF8F20]/30 rounded-xl p-4 text-center">
                 <p class="text-gray-300 text-sm">

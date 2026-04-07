@@ -5,7 +5,7 @@
             <p>Special Deal: Register and list your property now!</p>
         </div> --}}
         <nav
-            class="relative h-[70px] flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 bg-white dark:bg-[#000080]/80 dark:text-white text-gray-900 transition-all shadow">
+            class="relative h-[70px] flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 bg-white dark:bg-[#010E22] dark:text-white text-gray-900 transition-all shadow">
 
             <a href="/" class="flex flex-row gap-2 align-middle content-center items-center">
                 <x-application-logo class="w-fit h-16" />

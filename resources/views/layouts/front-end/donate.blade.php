@@ -22,7 +22,7 @@
 
         <!-- Hero Section -->
         <section
-            class="bg-[#000080]/80 mb-5 mt-2 rounded-2xl bg-[url(https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1170&auto=format&fit=crop)] bg-blend-overlay bg-no-repeat bg-cover py-20 px-4 md:px-8">
+            class="bg-[#021F59] mb-5 mt-2 rounded-2xl bg-[url(https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1170&auto=format&fit=crop)] bg-blend-overlay bg-no-repeat bg-cover py-20 px-4 md:px-8">
             <div class="max-w-6xl mx-auto text-center">
                 <h1 class="text-4xl md:text-5xl font-bold text-[#FF8F20] mb-4">Support {{ config('app.name') }}</h1>
                 <p class="text-white text-lg max-w-3xl mx-auto">Your donation helps us acquire professional cameras,
@@ -30,11 +30,11 @@
             </div>
         </section>
         <!-- Equipment Goal Progress -->
-        <section class="py-16 px-4 bg-[#000080]/80">
+        <section class="py-16 px-4 bg-[#021F59]">
             <livewire:donation-progress />
         </section>
         <!-- Donation Impact -->
-        <section class="py-16 px-4 bg-[#000080]/80">
+        <section class="py-16 px-4 bg-[#021F59]">
             <div class="max-w-6xl mx-auto text-center">
                 <h2 class="text-3xl font-bold text-white mb-4">How Your Support Helps</h2>
                 <p class="text-gray-200 max-w-3xl mx-auto mb-12">Every contribution goes directly toward purchasing
@@ -57,7 +57,7 @@
             </div>
         </section>
         <!-- Donation Options -->
-        <section id="donation-form" class="py-16 px-4 bg-[#000080]/80">
+        <section id="donation-form" class="py-16 px-4 bg-[#021F59]">
             <div class="max-w-6xl mx-auto">
                 <h2 class="text-3xl font-bold text-white text-center mb-8">Support {{ config('app.name') }}</h2>
 
@@ -89,7 +89,7 @@
         </section>
 
         <!-- Other Ways to Support -->
-        <section class="py-16 px-4 bg-[#000080]/80">
+        <section class="py-16 px-4 bg-[#021F59]">
             <div class="max-w-6xl mx-auto">
                 <h2 class="text-3xl font-bold text-white text-center mb-12">Other Ways to Support
                     {{ config('app.name') }}</h2>

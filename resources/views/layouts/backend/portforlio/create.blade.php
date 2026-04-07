@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Upload') }}
+            {{ __('Create Portforlio') }}
         </h2>
     </x-slot>
 
@@ -9,7 +9,7 @@
         <div class="max-w-full mx-auto sm:px-2 lg:px-2">
             <div class="bg-white/50 dark:bg-[#010E22] overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form class='w-full max-w-lg mx-auto' method='POST' action="{{ route('gallery.store') }}"
+                    <form class='w-full max-w-lg mx-auto' method='POST' action="{{ route('portfolio.store') }}"
                         enctype="multipart/form-data">
                         @csrf
                         <div class='flex flex-wrap -mx-3 mb-6'>

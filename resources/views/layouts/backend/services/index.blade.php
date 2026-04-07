@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Gallery
+            Services
         </h2>
     </x-slot>
 
@@ -11,19 +11,19 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <section class="max-w-full mx-auto px-4 md:px-8 mb-10">
                         <div class="flex">
-                            <h2 class="text-2xl font-semibold dark:text-white text-[#000080] mb-2 mt-4">Gallery</h2> <a
-                                href="{{ route('gallery.create') }}"
+                            <h2 class="text-2xl font-semibold dark:text-white text-[#000080] mb-2 mt-4">Service</h2>
+                            <a href="{{ route('services.create') }}"
                                 class="ml-auto bg-[#FF8F20] hover:bg-[#FF8F20]/80 text-white py-2 px-4 rounded-lg h-fit transition duration-300">Add
-                                Gallery Item</a>
+                                Service Item</a>
                         </div>
                         <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
-                            @forelse ($galleries as $gallery)
+                            @forelse ($services as $service)
                                 <div class="relative group cursor-pointer">
                                     <!-- Thumbnail with Aspect Ratio -->
                                     <div
                                         class="relative overflow-hidden rounded-lg shadow-lg bg-gray-100 dark:bg-gray-800">
                                         <div class="aspect-w-16 aspect-h-9">
-                                            <img src="{{ asset($gallery->image_path) }}" alt="{{ $gallery->title }}"
+                                            <img src="{{ asset($service->image_path) }}" alt="{{ $service->title }}"
                                                 class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
                                         </div>
 
@@ -35,13 +35,18 @@
                                         <!-- Content Overlay on Hover -->
                                         <div
                                             class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                                            <h3 class="text-black text-xl font-bold mb-2">{{ $gallery->title }}</h3>
-                                            <p class="tex text-sm line-clamp-2">{{ $gallery->description }}
+                                            <h3 class="text-black text-xl font-bold mb-2">{{ $service->title }}</h3>
+                                            <p class="tex text-sm line-clamp-2">{{ $service->description }}
                                             </p>
                                         </div>
-                                        <form action="{{ route('gallery.destroy', $gallery->id) }}" method="POST"
+                                        <div class="absolute bottom-2 left-2 z-20">
+                                            <a href="{{ route('services.edit', $service) }}"
+                                                class="bg-blue-500 hover:bg-blue-700 text-white rounded-lg px-3 py-1 text-sm transition duration-300 shadow-lg flex items-center gap-1"><i
+                                                    class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                                        </div>
+                                        <form action="{{ route('services.destroy', $service->id) }}" method="POST"
                                             class="absolute bottom-2 right-2 z-20"
-                                            onsubmit="return confirm('Delete {{ $gallery->title }}?')">
+                                            onsubmit="return confirm('Delete {{ $service->title }}?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"
@@ -61,13 +66,15 @@
                             @empty
                                 {{-- nice message and interface --}}
                                 <div class="col-span-3 text-center py-20">
-                                    <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-4">No gallery
+                                    <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-4">No
+                                        service
                                         items found.</h3>
-                                    <p class="text-gray-500 dark:text-gray-400 mb-6">Start by adding a new gallery item
+                                    <p class="text-gray-500 dark:text-gray-400 mb-6">Start by adding a new services
+                                        item
                                         to showcase your work.</p>
-                                    <a href="{{ route('gallery.create') }}"
+                                    <a href="{{ route('services.create') }}"
                                         class="bg-[#FF8F20] hover:bg-[#FF8F20]/80 text-white py-2 px-4 rounded-lg transition duration-300">Add
-                                        Gallery Item</a>
+                                        Service Item</a>
                                 </div>
                             @endforelse
                         </div>

@@ -8,7 +8,7 @@
     </style>
 
     <section
-        class="bg-[#000080]/80 rounded-2xl bg-[url(https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-blend-overlay bg-no-repeat bg-cover py-16 px-4 md:px-8 flex items-center justify-center">
+        class="bg-[#021F59] rounded-2xl bg-[url(https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-blend-overlay bg-no-repeat bg-cover py-16 px-4 md:px-8 flex items-center justify-center">
 
         <div class="max-w-6xl w-full">
             <!-- Header -->

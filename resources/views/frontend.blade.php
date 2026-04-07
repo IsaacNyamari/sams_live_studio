@@ -8,8 +8,11 @@
     <title>{{ config('app.name') }}</title>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    {{-- <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" /> --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BJ+Cree:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('images/logos/file_00000000a738720aa937501436d285b3.ico') }}"
         type="image/x-icon">
 
@@ -21,6 +24,13 @@
     @yield('featured_image')
     <!-- Styles -->
     <style>
+        /* add times new roman font here */
+        * {
+            font-family: "BJ Cree", serif;
+            font-weight: 700;
+            font-style: normal;
+        }
+
         h1,
         h2,
         h3,
@@ -44,11 +54,11 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body class="antialiased font-sans dark:bg-slate-800">
+<body class="antialiased font-sans dark:bg-[#010E24]">
     {{-- sweetalert --}}
     @include('sweetalert2::index')
     <livewire:front-end-navigation />
-    <main class="px-4 mb-2">
+    <main class="mb-2">
         @yield('content')
     </main>
 

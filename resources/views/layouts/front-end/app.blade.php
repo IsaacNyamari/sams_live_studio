@@ -28,7 +28,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body class="antialiased font-sans dark:bg-slate-800">
+<body class="antialiased font-sans dark:bg-[#010E24]">
     <livewire:front-end-navigation />
     <main class="px-4">
         {{ $slot }}

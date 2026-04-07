@@ -38,7 +38,7 @@
     @filemanagerStyles
 </head>
 
-<body class="dark:bg-[#000080]/80 bg-slate-100 text-black font-['Poppins']">
+<body class="dark:bg-[#010E22] bg-slate-100 text-black font-['Poppins']">
     @include('sweetalert2::index')
     <!-- Main Dashboard Container -->
     <div class="flex h-screen overflow-hidden">
@@ -86,7 +86,7 @@
 
             <!-- Top Bar -->
             <header
-                class="h-16 dark:bg-[#000080]/80 bg-[#F6F8FA] text-black border-b border-gray-200 flex items-center justify-between px-4 md:px-6">
+                class="h-16 dark:bg-[#010E22] bg-[#F6F8FA] text-black border-b border-gray-200 flex items-center justify-between px-4 md:px-6">
                 <!-- Left Section - Mobile Menu Button -->
                 <div class="flex items-center gap-4">
                     <button id="openSidebarBtn" class="lg:hidden dark:text-white hover:text-[#FF8F20] transition">
@@ -132,7 +132,7 @@
 
                         <!-- Dropdown Menu -->
                         <div id="userDropdown"
-                            class="absolute right-0 mt-2 w-48 dark:bg-[#000080]/80 bg-slate-100 dark:text-white border border-white/80 rounded-lg shadow-lg hidden z-50">
+                            class="absolute right-0 mt-2 w-48 dark:bg-[#010E22] bg-slate-100 dark:text-white border border-white/80 rounded-lg shadow-lg hidden z-50">
                             <div class="py-2">
                                 <a href="{{ route('profile') }}"
                                     class="block px-4 py-2 text-sm  dark:text-white hover:text-[#FF8F20] hover:bg-white/5 transition">Profile</a>

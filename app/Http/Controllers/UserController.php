@@ -47,9 +47,9 @@ class UserController extends Controller
             'subject' => 'required|string',
             'message' => 'required|string',
         ]);
-
+        dd($data['email']);
         try {
-            Mail::to($data['email'])->queue(new SendClientMail('', $data['subject'], $data['message'], $data['email']));
+            Mail::to($data['email'])->queue(new SendClientMail($data['name'], $data['subject'], $data['message'], $data['email']));
 
             return back()->with('success', 'Email queued successfully!');
         } catch (\Exception $e) {

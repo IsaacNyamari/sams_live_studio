@@ -22,7 +22,7 @@
 
         <!-- Hero Section -->
         <section
-            class="bg-[#000080]/80 mt-2 mb-5 rounded-2xl bg-[url(https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0)] bg-blend-overlay bg-no-repeat bg-cover py-20 px-4 md:px-8">
+            class="bg-[#021F59] mt-2 mb-5 rounded-2xl bg-[url(https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0)] bg-blend-overlay bg-no-repeat bg-cover py-20 px-4 md:px-8">
             <div class="max-w-6xl mx-auto text-center">
                 <h1 class="text-4xl md:text-5xl font-bold text-[#FF8F20] mb-4">About {{ config('app.name') }}</h1>
                 <p class="text-white text-lg max-w-3xl mx-auto">Kenya's premier live production and streaming facility,
@@ -31,7 +31,7 @@
         </section>
 
         <!-- Our Story -->
-        <section class="py-16 px-4 bg-[#000080]/80">
+        <section class="py-16 px-4 bg-[#021F59]">
             <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
                 <div>
                     <h2 class="text-3xl md:text-4xl font-bold text-[#FF8F20] mb-4">Our Story</h2>
@@ -53,7 +53,7 @@
         </section>
 
         <!-- Mission & Vision -->
-        <section class="py-16 px-4 bg-[#000080]/80">
+        <section class="py-16 px-4 bg-[#021F59]">
             <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
                 <div class="bg-black/40 backdrop-blur rounded-2xl p-8 border border-white/20">
                     <div class="text-[#FF8F20] mb-4">
@@ -86,7 +86,7 @@
         </section>
 
         <!-- Core Values -->
-        <section class="py-16 px-4 bg-[#000080]/80">
+        <section class="py-16 px-4 bg-[#021F59]">
             <div class="max-w-6xl mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold text-[#FF8F20] text-center mb-12">Our Core Values</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -134,7 +134,7 @@
         </section>
 
         <!-- Our Facility -->
-        <section class="py-16 px-4 bg-[#000080]/80">
+        <section class="py-16 px-4 bg-[#021F59]">
             <div class="max-w-6xl mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold text-[#FF8F20] text-center mb-12">Our Facility</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -183,7 +183,7 @@
         </section>
 
         <!-- The Team -->
-        <section class="py-16 px-4 bg-[#000080]/80">
+        <section class="py-16 px-4 bg-[#021F59]">
             <div class="max-w-6xl mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold text-[#FF8F20] text-center mb-12">Leadership Team</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -206,7 +206,7 @@
         </section>
 
         <!-- Equipment & Infrastructure -->
-        <section class="py-16 px-4 bg-[#000080]/80">
+        <section class="py-16 px-4 bg-[#021F59]">
             <div class="max-w-6xl mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold text-[#FF8F20] text-center mb-12">Our Infrastructure</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
