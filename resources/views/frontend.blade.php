@@ -100,6 +100,10 @@
                     handler.openIframe();
                 }
             });
+            window.Echo.channel('refresh.services')
+                .listen('.refresh.services', (e) => {
+                    Livewire.dispatch('refreshServices');
+                });
         })
     </script>
     @yield('scripts')

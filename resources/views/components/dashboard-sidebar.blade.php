@@ -4,8 +4,8 @@
     <div class="flex items-center justify-between h-16 px-4 border-b border-white/10">
         <div class="flex items-center gap-3">
             <div class="w-8 h-8 bg-[#FF8F20] rounded-lg flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                    fill="none" stroke="white" stroke-width="2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="white" stroke-width="2">
                     <rect x="2" y="6" width="20" height="12" rx="2" />
                     <path d="M8 12h8" />
                     <path d="M12 8v8" />
@@ -14,8 +14,8 @@
             <span class="dark:text-white font-semibold text-lg">{{ config('app.name') }}</span>
         </div>
         <button class="lg:hidden dark:text-white hover:text-[#FF8F20] transition" id="closeSidebarBtn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
                 <path d="M18 6L6 18M6 6l12 12" />
             </svg>
         </button>
@@ -24,8 +24,8 @@
     <!-- Sidebar Navigation -->
     <nav class="mt-6 px-4 space-y-1">
         <x-sidebar-links :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="1.5" class="group-hover:text-[#FF8F20]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" class="group-hover:text-[#FF8F20]">
                 <path d="M3 9l9-6 9 6v11a2 2 0 0 1-2 2h-5v-7H9v7H5a2 2 0 0 1-2-2z" />
             </svg>
             {{ __('Dashboard') }}
@@ -51,10 +51,16 @@
                 {{ __('Portfolio') }}
             </x-sidebar-links>
             <x-sidebar-links :href="route('dashboard.streams')" :active="request()->routeIs(['dashboard.streams', 'streams.create', 'streams.edit'])">
-                <i class="fa fa-video-camera group-hover:text-[#FF8F20]" fill="#FF8F20" x="0px" y="0px"
-                    width="20" height="20">
+                <i class="fa fa-video-camera group-hover:text-[#FF8F20]" fill="#FF8F20" x="0px" y="0px" width="20"
+                    height="20">
                 </i>
                 {{ __('Streams') }}
+            </x-sidebar-links>
+            <x-sidebar-links :href="route('dashboard.service')" :active="request()->routeIs(['dashboard.service', 'services.create', 'services.edit'])">
+                <i class="fa-brands fa-servicestack group-hover:text-[#FF8F20]" fill="#FF8F20" x="0px" y="0px" width="20"
+                    height="20">
+                </i>
+                {{ __('Services') }}
             </x-sidebar-links>
 
             <x-sidebar-links :href="route('dashboard.payments')" :active="request()->routeIs('dashboard.payments*', 'dashboard.user.payments')">
@@ -62,8 +68,8 @@
                 {{ __('Payments') }}
             </x-sidebar-links>
             <x-sidebar-links :href="route('dashboard.users')" :active="request()->routeIs('dashboard.users*', 'dashboard.user.bookings')">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="1.5" class="group-hover:text-[#FF8F20]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.5" class="group-hover:text-[#FF8F20]">
                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                     <line x1="16" y1="2" x2="16" y2="6" />
                     <line x1="8" y1="2" x2="8" y2="6" />
@@ -73,8 +79,8 @@
             </x-sidebar-links>
         @endif
         <x-sidebar-links :href="route('bookings')" :active="request()->routeIs('bookings*')">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="1.5" class="group-hover:text-[#FF8F20]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" class="group-hover:text-[#FF8F20]">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                 <line x1="16" y1="2" x2="16" y2="6" />
                 <line x1="8" y1="2" x2="8" y2="6" />
@@ -187,8 +193,7 @@
             <button type="submit"
                 class="flex items-center gap-3 w-full px-4 py-3 text-red-900 hover:text-[#FF8F20] hover:bg-white/5 rounded-lg transition group">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="1.5"
-                    class="group-hover:text-[#FF8F20]">
+                    fill="none" stroke="currentColor" stroke-width="1.5" class="group-hover:text-[#FF8F20]">
                     <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
                     <polyline points="16 17 21 12 16 7" />
                     <line x1="21" y1="12" x2="9" y2="12" />

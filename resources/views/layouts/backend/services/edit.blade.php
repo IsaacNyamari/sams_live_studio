@@ -12,6 +12,14 @@
                     <form class='w-full max-w-lg mx-auto' method='POST' action="{{ route('services.update', $service) }}"
                         enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
+                        @session('success')
+                            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
+                                role="alert">
+                                <strong class="font-bold">Success!</strong>
+                                <span class="block sm:inline">{{ session('success') }}</span>
+                            </div>
+                        @endsession
                         <div class='flex flex-wrap -mx-3 mb-6'>
                             {{-- title --}}
                             <div class='w-full px-3'>
@@ -85,7 +93,7 @@
                                 <button
                                     class='bg-[#000080] text-white hover:bg-[#021F59] dark:bg-white/100 dark:text-[#000080] dark:hover:bg-gray-50 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
                                     type='submit'>
-                                    Upload
+                                    Update
                                 </button>
                             </div>
                         </div>

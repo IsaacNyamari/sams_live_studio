@@ -57,7 +57,7 @@ Route::prefix('dashboard')->group(function () {
     Route::resource('/gallery', GalleryController::class)->middleware(['auth', 'verified']);
     Route::get('/gallery', [GalleryController::class, 'index'])->name('dashboard.gallery')->middleware(['auth', 'verified']);
     Route::resource('/portfolio', PortforlioController::class)->middleware(['auth', 'verified']);
-    Route::get('/dashboard/services', [ServiceController::class,'index'])->name('dashboard.service')->middleware(['auth', 'verified']);
+    Route::get('/dashboard/services', [ServiceController::class, 'index'])->name('dashboard.service')->middleware(['auth', 'verified']);
     Route::resource('/services', ServiceController::class)->middleware(['auth', 'verified']);
     Route::get('/portfolio', [PortforlioController::class, 'index'])->name('dashboard.portfolio')->middleware(['auth', 'verified']);
     Route::resource('/streams', LiveStreamController::class)->middleware(['auth', 'verified']);

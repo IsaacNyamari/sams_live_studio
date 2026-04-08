@@ -1,7 +1,7 @@
 @extends('frontend')
 @section('content')
     <section class="max-w-full px-4  bg-[#010812]/100 flex flex-col justify-between gap-6">
-        <div class="max-w-full mx-16 px-20 sm:px-6 lg:px-8 py-10 lg:py-16">
+        <div class="w-full px-4 sm:px-6 md:px-8 lg:px-2 py-8 sm:py-10 lg:py-16">
             <div class="grid lg:grid-cols-2 md:grid-cols-1 gap-8 lg:gap-12 items-center">
 
                 <!-- Left Content -->
@@ -20,23 +20,23 @@
                     </p>
 
                     <!-- Feature Cards -->
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-                        <div class="flex items-start space-x-3 border-r border-gray-500/50 pr-4">
-                            <i class="fa fa-video-camera fa-2x text-[#EEC667] mt-1"></i>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <div class="flex items-start space-x-3 border-r border-gray-500/50 pr-4 flex-1">
+                            <i class="fa fa-video-camera fa-2x text-[#EEC667] mt-1 flex-shrink-0"></i>
                             <div class="text-white text-xs uppercase leading-tight">
                                 4K multi-camera<br>production
                             </div>
                         </div>
 
-                        <div class="flex items-start space-x-3 border-r border-gray-500/50 pr-4">
-                            <i class="fas fa-music fa-2x text-[#EEC667] mt-1"></i>
+                        <div class="flex items-start space-x-3 border-r border-gray-500/50 pr-4 flex-1">
+                            <i class="fas fa-music fa-2x text-[#EEC667] mt-1 flex-shrink-0"></i>
                             <div class="text-white text-xs uppercase leading-tight">
                                 broadcast audio<br>48-channel mixing
                             </div>
                         </div>
 
-                        <div class="flex items-start space-x-3">
-                            <i class="fas fa-tower-broadcast fa-2x text-[#EEC667] mt-1"></i>
+                        <div class="flex items-start space-x-3 flex-1">
+                            <i class="fas fa-tower-broadcast fa-2x text-[#EEC667] mt-1 flex-shrink-0"></i>
                             <div class="text-white text-xs uppercase leading-tight">
                                 live streaming<br>multi-platform
                             </div>
@@ -177,28 +177,7 @@
 
     <section class="mt-2 mb-2 mx-8">
         <h2 class="text-xl uppercase dark:text-white text-center mb-2 mt-1">our services</h2>
-        <div class="grid grid-flow-col gap-2 grid-cols-5 items-center justify-center">
-            @foreach (\App\Models\Service::all() as $service)
-                <div
-                    class="mx-auto border border-[#c29a4e] rounded overflow-hidden w-[250px] h-[300px] hover:shadow-lg hover:shadow-[#c29a4e]/20 transition-all duration-300">
-                    <div class="w-full h-full flex flex-col">
-                        <!-- Image Section -->
-                        <div class="h-[140px] overflow-hidden">
-                            <img src="{{ asset($service->image_path) }}" alt="{{ $service->title }}"
-                                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                        </div>
-                        <!-- Content Section -->
-                        <div class="flex-1 px-3 py-4 bg-[#010812]">
-                            <h2 class="text-lg md:text-xl text-white mb-2 uppercase font-semibold tracking-wide">
-                                {{ $service->title }}
-                            </h2>
-                            <p class="text-white/80 text-xs leading-relaxed">
-                                {{ $service->description }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
+
+        <livewire:load-frontend-services />
     </section>
 @endsection

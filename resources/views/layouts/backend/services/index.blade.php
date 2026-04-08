@@ -34,7 +34,7 @@
 
                                         <!-- Content Overlay on Hover -->
                                         <div
-                                            class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                                            class="absolute bottom-0 bg-white left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                                             <h3 class="text-black text-xl font-bold mb-2">{{ $service->title }}</h3>
                                             <p class="tex text-sm line-clamp-2">{{ $service->description }}
                                             </p>

@@ -17,3 +17,6 @@ Broadcast::channel('notifiy-admin-on-donation.{userId}', function ($user, $userI
 Broadcast::channel('user-booking-updates.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
+Broadcast::channel('refresh.services', function () {
+    return true;
+});
