@@ -62,6 +62,12 @@
                 </i>
                 {{ __('Services') }}
             </x-sidebar-links>
+            <x-sidebar-links :href="route('packages')" :active="request()->routeIs('packages*')">
+                <i class="fa-brands fa-servicestack group-hover:text-[#FF8F20]" fill="#FF8F20" x="0px" y="0px" width="20"
+                    height="20">
+                </i>
+                {{ __('Packages') }}
+            </x-sidebar-links>
 
             <x-sidebar-links :href="route('dashboard.payments')" :active="request()->routeIs('dashboard.payments*', 'dashboard.user.payments')">
                 <i class="fa fa-dollar" width="20" height="20" aria-hidden="true"></i>

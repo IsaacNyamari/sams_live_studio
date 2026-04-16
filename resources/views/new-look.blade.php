@@ -180,4 +180,8 @@
 
         <livewire:load-frontend-services />
     </section>
+    <section class="max-w-full px-4 py-10  flex flex-col justify-between gap-6">
+        <h2 class="text-xl uppercase dark:text-white text-[#D4A44C] text-center mb-2 mt-1">our packages</h2>
+        <livewire:package-ui />
+    </section>
 @endsection

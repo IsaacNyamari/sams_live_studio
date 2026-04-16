@@ -20,3 +20,9 @@ Broadcast::channel('user-booking-updates.{id}', function ($user, $id) {
 Broadcast::channel('refresh.services', function () {
     return true;
 });
+Broadcast::channel('load.packages', function () {
+    return true;
+});
+Broadcast::channel('traffic.monitor', function () {
+    return true;
+});

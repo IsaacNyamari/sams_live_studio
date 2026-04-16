@@ -15,7 +15,15 @@
     <link href="https://fonts.googleapis.com/css2?family=BJ+Cree:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('images/logos/file_00000000a738720aa937501436d285b3.ico') }}"
         type="image/x-icon">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css"
+        integrity="sha512-2bBQCjcnw658Lho4nlXJcc6WkV/UxpE/sAokbXPxQNGqmNdQrWqtw26Ns9kFF/yG792pKR1Sx8/Y1Lf1XN4GKA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.min.js"
+        integrity="sha512-nKXmKvJyiGQy343jatQlzDprflyB5c+tKCzGP3Uq67v+lmzfnZUi/ZT+fc6ITZfSC5HhaBKUIvr/nTLCV+7F+Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -52,6 +60,9 @@
     <!-- Step 4: The connector (what you asked about) -->
     <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/moment-timezone@6.1.20/index.global.min.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body class="antialiased font-sans dark:bg-[#010E24]">
@@ -61,7 +72,6 @@
     <main class="mb-2">
         @yield('content')
     </main>
-
     <livewire:footer />
     @livewireScripts
     <script>
@@ -104,7 +114,44 @@
                 .listen('.refresh.services', (e) => {
                     Livewire.dispatch('refreshServices');
                 });
+            window.Echo.channel('load.packages')
+                .listen('.load.packages', (e) => {
+                    console.log(e);
+
+                    Livewire.dispatch('refreshPackages');
+                });
+
+            window.addEventListener("DOMContentLoaded", (e) => {
+                @if (auth()->user())
+                    let name = '{{ Auth::user()->name }}';
+                    $('#sendTraffic').keyup(() => {
+                        window.Echo.private('traffic.monitor').whisper('new.traffic', {
+                            name: name,
+                            text: $('#sendTraffic').val()
+                        })
+                    })
+                @endif
+            })
+            Livewire.on('inquirySent', (event) => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Inquiry Sent',
+                    text: event[0].message,
+                    confirmButtonColor: '#FF8F20'
+                });
+            });
+            window.addEventListener('swal:loading', event => {
+                Swal.fire({
+                    title: 'Loading...',
+                    onBeforeOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+            });
+
         })
     </script>
     @yield('scripts')
-    {{-- <script
+</body>
+
+</html>

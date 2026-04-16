@@ -7,6 +7,7 @@ use App\Http\Controllers\FrontendBooking;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\LiveStreamController;
+use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\PortforlioController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SiteSettingsController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use LivewireFilemanager\Filemanager\Http\Controllers\Api\FileController;
+
 
 Route::get('/files/{$path}', [FileController::class, 'show'])
     ->where('path', '.*')
@@ -59,7 +61,9 @@ Route::prefix('dashboard')->group(function () {
     Route::resource('/portfolio', PortforlioController::class)->middleware(['auth', 'verified']);
     Route::get('/dashboard/services', [ServiceController::class, 'index'])->name('dashboard.service')->middleware(['auth', 'verified']);
     Route::resource('/services', ServiceController::class)->middleware(['auth', 'verified']);
+    Route::resource('/packages', PackagesController::class)->middleware(['auth', 'verified']);
     Route::get('/portfolio', [PortforlioController::class, 'index'])->name('dashboard.portfolio')->middleware(['auth', 'verified']);
+    Route::get('/packages', [PackagesController::class, 'index'])->name('packages')->middleware(['auth', 'verified']);
     Route::resource('/streams', LiveStreamController::class)->middleware(['auth', 'verified']);
     Route::get('/streams', [LiveStreamController::class, 'index'])->name('dashboard.streams')->middleware(['auth', 'verified']);
     Route::post('/streams/{stream}/end', [LiveStreamController::class, 'stop'])->name('dashboard.streams.end')->middleware(['auth', 'verified']);

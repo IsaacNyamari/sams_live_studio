@@ -316,7 +316,15 @@
                     'timerProgressBar': true
                 })
             })
+
         });
+        @if (Auth::user()->isAdmin())
+            document.addEventListener("DOMContentLoaded", () => {
+                Echo.private('traffic.monitor').listenForWhisper('new.traffic', (e) => {
+                    console.log(e.text)
+                })
+            })
+        @endif
     </script>
 </body>
 
