@@ -30,8 +30,8 @@
                 class="w-full bg-[#FF8F20] hover:bg-[#FF8F20]/90 text-gray-900 font-semibold py-2 rounded-lg transition text-center block">Inquire
                 via WhatsApp</a>
             <a href="#" data-bs-toggle="modal" data-bs-target="#emailModal_{{ $package->id }}"
-                class="w-full bg-[#021F59] hover:bg-[#021F59]/90 text-white font-semibold py-2 mt-2 rounded-lg transition text-center block">Email
-                Quote</a>
+                class="w-full bg-[#021F59] hover:bg-[#021F59]/90 text-white font-semibold py-2 mt-2 rounded-lg transition text-center block">Inquire via Email
+                </a>
         </div>
         {{-- modal for mailing quote --}}
         <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
@@ -60,7 +60,7 @@
                             <x-input-label for="duration" :value="__('Session Duration')" />
                             <x-text-input id="duration" wire:model='duration' class="block mt-1 w-full" type="text"
                                 name="duration" required autofocus />
-                         
+
                     </div>
                     <div class="modal-footer">
                         <button onclick="showLoading()" type="submit" class="btn btn-primary"

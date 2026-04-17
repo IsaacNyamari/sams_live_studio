@@ -60,10 +60,10 @@ class PackageUi extends Component
                 'package' => $name,
                 'features' => $package->features->pluck('feature')->join(', '),
             ]));
-            $this->dispatch('inquirySent', ['message' => "Your inquiry for the {$name} package has been sent!"]);
+            $this->dispatch('inquirySent', ['message' => "Your inquiry for the {$name} package has been sent!",'icon' => 'success']);
         } catch (\Exception $e) {
             Log::error('Failed to send package inquiry email: '.$e->getMessage());
-            $this->dispatch('inquirySent', ['message' => 'There was an error sending your inquiry. Please try again later.']);
+            $this->dispatch('inquirySent', ['message' => 'There was an error sending your inquiry. Please try again later.','icon' => 'error']);
         }
     }
 }

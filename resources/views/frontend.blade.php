@@ -21,9 +21,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.min.js"
         integrity="sha512-nKXmKvJyiGQy343jatQlzDprflyB5c+tKCzGP3Uq67v+lmzfnZUi/ZT+fc6ITZfSC5HhaBKUIvr/nTLCV+7F+Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -74,6 +71,7 @@
     </main>
     <livewire:footer />
     @livewireScripts
+    @yield('scripts')
     <script>
         document.addEventListener('livewire:init', function() {
             Livewire.on('initializePayment', async (event) => {
@@ -134,8 +132,8 @@
             })
             Livewire.on('inquirySent', (event) => {
                 Swal.fire({
-                    icon: 'success',
-                    title: 'Inquiry Sent',
+                    icon: event[0].icon,
+                    title: 'Inquiry Status',
                     text: event[0].message,
                     confirmButtonColor: '#FF8F20'
                 });
@@ -151,7 +149,6 @@
 
         })
     </script>
-    @yield('scripts')
 </body>
 
 </html>

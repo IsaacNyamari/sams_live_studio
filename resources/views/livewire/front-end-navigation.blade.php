@@ -5,11 +5,11 @@
             <p>Special Deal: Register and list your property now!</p>
         </div> --}}
         <nav
-            class="relative h-[70px] flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 bg-white dark:bg-[#010E22] dark:text-white text-gray-900 transition-all shadow">
+            class="relative navbar-dark h-[70px] dark:text-white flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4  dark:bg-[#010E22]/90 text-gray-900 transition-all shadow">
 
             <a href="/" class="flex flex-row gap-2 align-middle content-center items-center">
                 <x-application-logo class="w-fit h-16" />
-                <h2 class="h2">{{ config('app.name') }}</h2>
+                <h2 class="h2 dark:text-white">{{ config('app.name') }}</h2>
             </a>
             <ul class="hidden md:flex items-center space-x-8 md:pl-28">
                 <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
