@@ -26,3 +26,6 @@ Broadcast::channel('load.packages', function () {
 Broadcast::channel('traffic.monitor', function () {
     return true;
 });
+Broadcast::channel('gallery-updates', function () {
+    return true;
+});

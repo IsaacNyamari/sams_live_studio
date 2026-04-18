@@ -9,9 +9,9 @@
 
             <a href="/" class="flex flex-row gap-2 align-middle content-center items-center">
                 <x-application-logo class="w-fit h-16" />
-                <h2 class="h2 dark:text-white">{{ config('app.name') }}</h2>
+                <h2 class="h2 dark:text-white md:hidden">{{ config('app.name') }}</h2>
             </a>
-            <ul class="hidden md:flex items-center space-x-8 md:pl-28">
+            <ul class="hidden md:flex items-center space-x-8 md:space-x-2 md:pl-0">
                 <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                     {{ __('Home') }}
                 </x-nav-link>

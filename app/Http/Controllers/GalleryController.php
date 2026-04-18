@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\GalleryUpdated;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
 
@@ -33,6 +34,8 @@ class GalleryController extends Controller
             'description' => $data['description'],
             'image_path' => 'images/gallery/'.$file->getClientOriginalName(),
         ]);
+        broadcast(new GalleryUpdated);
+
         return redirect()->route('dashboard.gallery')->with('success', 'Gallery item created successfully');
     }
 
@@ -44,7 +47,7 @@ class GalleryController extends Controller
             unlink($imagePath);
         }
         $gallery->delete();
-
+        broadcast(new GalleryUpdated);
         return redirect()->route('dashboard.gallery')->with('success', 'Gallery item deleted successfully');
     }
 }

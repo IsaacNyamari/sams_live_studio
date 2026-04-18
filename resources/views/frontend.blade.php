@@ -147,6 +147,10 @@
                 });
             });
 
+            window.Echo.channel('gallery-updates').listen('.gallery.updated', (e) => {
+                Livewire.dispatch('refreshGallery');
+            });
+
         })
     </script>
 </body>

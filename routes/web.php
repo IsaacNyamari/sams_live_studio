@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontendBooking;
@@ -15,6 +16,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use LivewireFilemanager\Filemanager\Http\Controllers\Api\FileController;
+
 
 
 Route::get('/files/{$path}', [FileController::class, 'show'])
@@ -44,6 +46,7 @@ Route::prefix('dashboard')->group(function () {
     Route::view('/profile', 'profile')->name('profile');
     Route::get('/settings', [SiteSettingsController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard.settings');
     Route::resource('/bookings', BookingController::class)->middleware(['auth', 'verified']);
+    Route::resource('/brands', BrandsController::class)->middleware(['auth', 'verified']);
     Route::get('/bookings', [BookingController::class, 'index'])->name('bookings')->middleware(['auth', 'verified']);
     Route::get('/bookings/client', [DashboardController::class, 'clientBookings'])->name('client.bookings')->middleware(['auth', 'verified']);
     Route::post('/bookings/{booking}/pay', [BookingController::class, 'initiatePayment'])->name('booking.initiatePayment')->middleware(['auth', 'verified']);

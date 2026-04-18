@@ -270,96 +270,9 @@
                             </div>
                             <p class="text-white/70 text-xs mt-2 group-hover:text-[#D4A44C]">Nation Media</p>
                         </div>
-                        <div class="flex flex-col items-center justify-center group cursor-pointer">
-                            <div
-                                class="w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-[#C29A4E]/20 transition-all duration-300">
-                                <i class="fa fa-bank fa-3x text-[#D4A44C]"></i>
-                            </div>
-                            <p class="text-white/70 text-xs mt-2 group-hover:text-[#D4A44C]">KCB Group</p>
-                        </div>
-                        <div class="flex flex-col items-center justify-center group cursor-pointer">
-                            <div
-                                class="w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-[#C29A4E]/20 transition-all duration-300">
-                                <i class="fa fa-mobile fa-3x text-[#D4A44C]"></i>
-                            </div>
-                            <p class="text-white/70 text-xs mt-2 group-hover:text-[#D4A44C]">Safaricom</p>
-                        </div>
-                        <div class="flex flex-col items-center justify-center group cursor-pointer">
-                            <div
-                                class="w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-[#C29A4E]/20 transition-all duration-300">
-                                <i class="fa fa-beer fa-3x text-[#D4A44C]"></i>
-                            </div>
-                            <p class="text-white/70 text-xs mt-2 group-hover:text-[#D4A44C]">EABL</p>
-                        </div>
-                        <div class="flex flex-col items-center justify-center group cursor-pointer">
-                            <div
-                                class="w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-[#C29A4E]/20 transition-all duration-300">
-                                <i class="fa fa-globe fa-3x text-[#D4A44C]"></i>
-                            </div>
-                            <p class="text-white/70 text-xs mt-2 group-hover:text-[#D4A44C]">UNICEF</p>
-                        </div>
-                        <div class="flex flex-col items-center justify-center group cursor-pointer">
-                            <div
-                                class="w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-[#C29A4E]/20 transition-all duration-300">
-                                <i class="fa fa-car fa-3x text-[#D4A44C]"></i>
-                            </div>
-                            <p class="text-white/70 text-xs mt-2 group-hover:text-[#D4A44C]">Toyota Kenya</p>
-                        </div>
                     </div>
-                    <!-- Duplicate for seamless loop -->
-                    {{-- <div class="flex gap-12 md:gap-16 mx-8">
-                        <div class="flex flex-col items-center justify-center group cursor-pointer">
-                            <div class="w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-[#C29A4E]/20 transition-all duration-300">
-                                <i class="fa fa-tv fa-3x text-[#D4A44C]"></i>
-                            </div>
-                            <p class="text-white/70 text-xs mt-2 group-hover:text-[#D4A44C]">Nation Media</p>
-                        </div>
-                        <div class="flex flex-col items-center justify-center group cursor-pointer">
-                            <div class="w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-[#C29A4E]/20 transition-all duration-300">
-                                <i class="fa fa-bank fa-3x text-[#D4A44C]"></i>
-                            </div>
-                            <p class="text-white/70 text-xs mt-2 group-hover:text-[#D4A44C]">KCB Group</p>
-                        </div>
-                        <div class="flex flex-col items-center justify-center group cursor-pointer">
-                            <div class="w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-[#C29A4E]/20 transition-all duration-300">
-                                <i class="fa fa-mobile fa-3x text-[#D4A44C]"></i>
-                            </div>
-                            <p class="text-white/70 text-xs mt-2 group-hover:text-[#D4A44C]">Safaricom</p>
-                        </div>
-                        <div class="flex flex-col items-center justify-center group cursor-pointer">
-                            <div class="w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-[#C29A4E]/20 transition-all duration-300">
-                                <i class="fa fa-beer fa-3x text-[#D4A44C]"></i>
-                            </div>
-                            <p class="text-white/70 text-xs mt-2 group-hover:text-[#D4A44C]">EABL</p>
-                        </div>
-                        <div class="flex flex-col items-center justify-center group cursor-pointer">
-                            <div class="w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-[#C29A4E]/20 transition-all duration-300">
-                                <i class="fa fa-globe fa-3x text-[#D4A44C]"></i>
-                            </div>
-                            <p class="text-white/70 text-xs mt-2 group-hover:text-[#D4A44C]">UNICEF</p>
-                        </div>
-                        <div class="flex flex-col items-center justify-center group cursor-pointer">
-                            <div class="w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-[#C29A4E]/20 transition-all duration-300">
-                                <i class="fa fa-car fa-3x text-[#D4A44C]"></i>
-                            </div>
-                            <p class="text-white/70 text-xs mt-2 group-hover:text-[#D4A44C]">Toyota Kenya</p>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
-
-            <!-- Alternative: Static Grid Layout (if you don't want marquee) -->
-            <!--
-                                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
-                                        <div class="flex flex-col items-center justify-center group cursor-pointer">
-                                            <div class="w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-[#C29A4E]/20 transition-all duration-300">
-                                                <i class="fa fa-tv fa-3x text-[#D4A44C]"></i>
-                                            </div>
-                                            <p class="text-white/70 text-xs mt-2 group-hover:text-[#D4A44C]">Nation Media</p>
-                                        </div>
-                                        Add more brand items...
-                                    </div>
-                                    -->
         </div>
     </section>
 
