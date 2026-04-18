@@ -63,20 +63,19 @@ class BrandsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Brands $brand)
     {
         $request->validate([
             'name' => 'required|string|max:255',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         if ($request->hasFile('logo')) {
-            $path = public_path(Brands::findOrFail($id)->logo_path);
+            $path = public_path($brand->logo_path);
             unlink($path);
             $logoPath = $request->file('logo')->move('images/brands', $request->file('logo')->getClientOriginalName());
         } else {
-            $logoPath = Brands::findOrFail($id)->logo_path;
+            $logoPath = $brand->logo_path;
         }
-        $brand = Brands::findOrFail($id);
         $brand->update([
             'name' => $request->input('name'),
             'logo_path' => $logoPath,

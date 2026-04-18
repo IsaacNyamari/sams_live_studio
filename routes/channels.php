@@ -29,3 +29,6 @@ Broadcast::channel('traffic.monitor', function () {
 Broadcast::channel('gallery-updates', function () {
     return true;
 });
+Broadcast::channel('refresh.brands', function () {
+    return true;
+});

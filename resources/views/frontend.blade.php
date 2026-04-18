@@ -150,6 +150,9 @@
             window.Echo.channel('gallery-updates').listen('.gallery.updated', (e) => {
                 Livewire.dispatch('refreshGallery');
             });
+            window.Echo.channel('refresh.brands').listen('.brands.updated', (e) => {
+                Livewire.dispatch('refreshBrands');
+            });
 
         })
     </script>

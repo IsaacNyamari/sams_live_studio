@@ -72,10 +72,5 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/streams/{stream}/end', [LiveStreamController::class, 'stop'])->name('dashboard.streams.end')->middleware(['auth', 'verified']);
 })->middleware(['auth', 'verified']);
 
-Route::get('image/', function () {
-    return view('image');
-})->name('image');
-Route::get('new-look/', function () {
-    return view('new-look');
-})->name('new-look');
+
 require __DIR__.'/auth.php';
