@@ -28,7 +28,7 @@ new #[Layout('layouts.guest')] class extends Component {
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
-
+        $validated['username'] = strtolower(str_replace(' ', '_', $validated['name']));
         event(new Registered(($user = User::create($validated))));
         $user->syncRoles(['client']);
         Auth::login($user);

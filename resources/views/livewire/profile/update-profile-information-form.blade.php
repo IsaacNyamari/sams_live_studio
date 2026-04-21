@@ -78,14 +78,14 @@ new class extends Component {
     <form wire:submit="updateProfileInformation" class="mt-6 space-y-6">
         <div>
             <x-input-label for="name" :value="__('Name')" />
-            <x-text-input wire:model="name" id="name" name="name" type="text" class="mt-1 block w-full" required
+            <x-text-input wire:model="name" id="name" name="name" type="text" class="mt-1 block w-full form-control" required
                 autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input wire:model="email" id="email" name="email" type="email" class="mt-1 block w-full"
+            <x-text-input wire:model="email" id="email" name="email" type="email" class="mt-1 block w-full form-control"
                 required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
@@ -110,7 +110,7 @@ new class extends Component {
         </div>
         <div>
             <x-input-label for="phone" :value="__('Phone')" />
-            <x-text-input wire:model="phone" id="phone" phone="phone" type="text" class="mt-1 block w-full"
+            <x-text-input wire:model="phone" id="phone" phone="phone" type="text" class="mt-1 block w-full form-control"
                 required autofocus autocomplete="phone" />
             <x-input-error class="mt-2" :messages="$errors->get('phone')" />
         </div>

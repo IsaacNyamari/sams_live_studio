@@ -4,16 +4,15 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable; 
+use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable, HasRoles;
+    use HasFactory, HasRoles, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -25,6 +24,8 @@ class User extends Authenticatable
         'email',
         'phone',
         'password',
+        'cover_image',
+        'profile_image',
     ];
 
     /**
@@ -49,18 +50,22 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
     public function isAdmin()
     {
         return $this->hasRole('admin');
     }
+
     public function isClient()
     {
         return $this->hasRole('client');
     }
+
     public function bookings()
     {
         return $this->hasMany(Booking::class, 'user_id');
     }
+
     public function payments()
     {
         return $this->morphMany(Payment::class, 'payable');

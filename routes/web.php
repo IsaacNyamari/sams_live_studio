@@ -13,15 +13,11 @@ use App\Http\Controllers\PortforlioController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SiteSettingsController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserProfileController;
+use App\Http\Middleware\EnsureIsAdmin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use LivewireFilemanager\Filemanager\Http\Controllers\Api\FileController;
 
-
-
-Route::get('/files/{$path}', [FileController::class, 'show'])
-    ->where('path', '.*')
-    ->name('assets.show');
 Route::get('/', [FrontEndController::class, 'index'])->name('home');
 Route::get('/donate', [FrontEndController::class, 'donate'])->name('donate');
 Route::get('/about', [FrontEndController::class, 'about'])->name('about');
@@ -39,12 +35,12 @@ Route::post('/logout', function () {
 
     return redirect('/');
 })->name('logout');
-
+Route::get('@{username}', [FrontEndController::class, 'userProfile'])->name('user.profile');
 Route::get('/v1/payments', [DashboardController::class, 'userPaymentApi'])->name('api.payments')->middleware(['auth', 'verified']);
 Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
     Route::view('/profile', 'profile')->name('profile');
-    Route::get('/settings', [SiteSettingsController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard.settings');
+    Route::get('/settings', [SiteSettingsController::class, 'index'])->middleware(['auth', 'verified', EnsureIsAdmin::class])->name('dashboard.settings');
     Route::resource('/bookings', BookingController::class)->middleware(['auth', 'verified']);
     Route::resource('/brands', BrandsController::class)->middleware(['auth', 'verified']);
     Route::get('/bookings', [BookingController::class, 'index'])->name('bookings')->middleware(['auth', 'verified']);
@@ -68,9 +64,9 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/portfolio', [PortforlioController::class, 'index'])->name('dashboard.portfolio')->middleware(['auth', 'verified']);
     Route::get('/packages', [PackagesController::class, 'index'])->name('packages')->middleware(['auth', 'verified']);
     Route::resource('/streams', LiveStreamController::class)->middleware(['auth', 'verified']);
+    Route::post('/profile/update/{user}', [UserProfileController::class, 'update'])->name('profile.image.update')->middleware(['auth', 'verified']);
     Route::get('/streams', [LiveStreamController::class, 'index'])->name('dashboard.streams')->middleware(['auth', 'verified']);
     Route::post('/streams/{stream}/end', [LiveStreamController::class, 'stop'])->name('dashboard.streams.end')->middleware(['auth', 'verified']);
 })->middleware(['auth', 'verified']);
-
 
 require __DIR__.'/auth.php';

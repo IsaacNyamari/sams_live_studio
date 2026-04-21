@@ -57,14 +57,14 @@
                 {{ __('Streams') }}
             </x-sidebar-links>
             <x-sidebar-links :href="route('dashboard.service')" :active="request()->routeIs(['dashboard.service', 'services.create', 'services.edit'])">
-                <i class="fa-brands fa-servicestack group-hover:text-[#FF8F20]" fill="#FF8F20" x="0px" y="0px" width="20"
-                    height="20">
+                <i class="fa-brands fa-servicestack group-hover:text-[#FF8F20]" fill="#FF8F20" x="0px" y="0px"
+                    width="20" height="20">
                 </i>
                 {{ __('Services') }}
             </x-sidebar-links>
             <x-sidebar-links :href="route('packages')" :active="request()->routeIs('packages*')">
-                <i class="fa-brands fa-servicestack group-hover:text-[#FF8F20]" fill="#FF8F20" x="0px" y="0px" width="20"
-                    height="20">
+                <i class="fa-brands fa-servicestack group-hover:text-[#FF8F20]" fill="#FF8F20" x="0px" y="0px"
+                    width="20" height="20">
                 </i>
                 {{ __('Packages') }}
             </x-sidebar-links>
@@ -176,15 +176,17 @@
     <!-- Divider -->
     <div class="mx-4 mt-6 pt-6 border-t border-white/10">
         <!-- Settings Link -->
-        <x-sidebar-links :href="route('dashboard.settings')" class="mb-2" :active="request()->routeIs('dashboard.settings')">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="1.5" class="group-hover:text-[#FF8F20]">
-                <circle cx="12" cy="12" r="3" />
-                <path
-                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
-            </svg>
-            <span>Settings</span>
-        </x-sidebar-links>
+        @if (auth()->user()->isAdmin())
+            <x-sidebar-links :href="route('dashboard.settings')" class="mb-2" :active="request()->routeIs('dashboard.settings')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="1.5" class="group-hover:text-[#FF8F20]">
+                    <circle cx="12" cy="12" r="3" />
+                    <path
+                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                </svg>
+                <span>Settings</span>
+            </x-sidebar-links>
+        @endif
         <x-sidebar-links :href="route('profile')" :active="request()->routeIs('profile')">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                 fill="none" stroke="currentColor" stroke-width="1.5" class="group-hover:text-[#FF8F20]">

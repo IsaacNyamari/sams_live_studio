@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RefreshBrands;
 use App\Models\Brands;
 use Illuminate\Http\Request;
 
@@ -38,6 +39,7 @@ class BrandsController extends Controller
             'name' => $request->input('name'),
             'logo_path' => $logoPath,
         ]);
+        broadcast(new RefreshBrands);
 
         return redirect()->route('brands.index')->with('success', 'Brand created successfully.');
     }
@@ -71,7 +73,9 @@ class BrandsController extends Controller
         ]);
         if ($request->hasFile('logo')) {
             $path = public_path($brand->logo_path);
-            unlink($path);
+            if (file_exists($path)) {
+                unlink($path);
+            }
             $logoPath = $request->file('logo')->move('images/brands', $request->file('logo')->getClientOriginalName());
         } else {
             $logoPath = $brand->logo_path;
@@ -80,6 +84,7 @@ class BrandsController extends Controller
             'name' => $request->input('name'),
             'logo_path' => $logoPath,
         ]);
+        broadcast(new RefreshBrands);
 
         return redirect()->route('brands.index')->with('success', 'Brand updated successfully.');
     }
@@ -90,8 +95,11 @@ class BrandsController extends Controller
     public function destroy(Brands $brand)
     {
         $path = public_path($brand->logo_path);
-        unlink($path);
+        if (file_exists($path)) {
+            unlink($path);
+        }
         $brand->delete();
+        broadcast(new RefreshBrands);
 
         return redirect()->route('brands.index')->with('success', 'Brand deleted successfully.');
     }

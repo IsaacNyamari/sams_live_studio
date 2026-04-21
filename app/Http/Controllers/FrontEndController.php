@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\LiveStream;
+use App\Models\User;
 use Illuminate\Support\Facades\Http;
 
 class FrontEndController extends Controller
@@ -86,5 +87,11 @@ class FrontEndController extends Controller
     public function academy()
     {
         return view('layouts.front-end.academy');
+    }
+
+    public function userProfile($username)
+    {
+        $user = User::role('client')->where('username', $username)->firstOrFail();
+        return view('layouts.front-end.user-profile', compact('user'));
     }
 }

@@ -45,11 +45,11 @@
 
                     <!-- Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                        <button
+                        <a href="{{ route('booking-page.index') }}"
                             class="bg-gradient-to-r from-[#AF8640] via-[#E7BA60] to-[#AF8640] text-white px-8 py-3 rounded-md font-semibold shadow-lg hover:opacity-90 transition-opacity duration-300 flex items-center justify-center gap-2">
                             BOOK A SESSION
                             <i class="fa fa-angle-right text-[#010812]" aria-hidden="true"></i>
-                        </button>
+                        </a>
 
                         <button
                             class="bg-[#010812] text-white border border-[#C29A4E]/80 px-8 py-3 rounded-md font-semibold shadow-lg hover:bg-[#1a2440] transition-colors duration-300 flex items-center justify-center gap-2">
@@ -197,9 +197,6 @@
             <div
                 class="group relative overflow-hidden rounded-lg border border-[#C29A4E]/30 hover:border-[#C29A4E] transition-all duration-300">
                 <div class="relative h-[250px] overflow-hidden">
-                    {{-- <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?q=80&w=1170&auto=format&fit=crop"
-                        alt="Music Festival"
-                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"> --}}
                     <iframe width="560" height="315"
                         class="w-full h-full object-cover scale-110 transition-transform duration-500"
                         src="https://www.youtube.com/embed/MLWNql85pyQ?si=Sqeid4hwj8CI2jEx" title="YouTube video player"
@@ -215,16 +212,13 @@
             <div
                 class="group relative overflow-hidden rounded-lg border border-[#C29A4E]/30 hover:border-[#C29A4E] transition-all duration-300">
                 <div class="relative h-[250px] overflow-hidden">
-                    {{-- <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?q=80&w=1170&auto=format&fit=crop"
-                        alt="Music Festival"
-                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"> --}}
+
                     <iframe width="560" height="315"
                         class="w-full h-full object-cover scale-110 transition-transform duration-500"
-                        src="https://www.youtube.com/embed/MLWNql85pyQ?si=Sqeid4hwj8CI2jEx" title="YouTube video player"
+                        src="https://www.youtube.com/embed/NQQVkBPA2pw?si=OOxcLT_wTR4AdKeC" title="YouTube video player"
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
                 </div>
                 <div class="p-3 bg-[#010812]">
                     <p class="text-white text-xs truncate">Livestream • Remnants Meeting</p>
@@ -232,15 +226,14 @@
             </div>
         </div>
 
-        <!-- View All Button -->
-        <div class="text-center mt-10">
-            <button
-                class="border border-[#C29A4E] text-[#D4A44C] px-8 py-2 rounded-md hover:bg-[#C29A4E] hover:text-white transition-all duration-300">
-                VIEW ALL PROJECTS
-                <i class="fa fa-arrow-right ml-2"></i>
-            </button>
-        </div>
+
     </section>
+    <!-- OUR WORK / PORTFOLIO Section -->
+    <span class="flex py-3 items-center px-4 mt-8">
+        <span class="h-px flex-1 bg-gradient-to-r from-transparent to-gray-600"></span>
+        <h2 class="shrink-0 px-4 text-2xl md:text-3xl font-bold text-[#D4A44C] tracking-wide">OUR PACKAGES</h2>
+        <span class="h-px flex-1 bg-gradient-to-l from-transparent to-gray-600"></span>
+    </span>
 
     <!-- PACKAGES Section -->
     <section class="max-w-full px-4 py-10 flex flex-col justify-between gap-6">
@@ -262,15 +255,7 @@
             <div class="relative overflow-hidden">
                 <div class="flex justify-center whitespace-nowrap py-4">
                     <!-- Brand Logos - Row 1 -->
-                    <div class="flex gap-12 md:gap-16 mx-8">
-                        <div class="flex flex-col items-center justify-center group cursor-pointer">
-                            <div
-                                class="w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-[#C29A4E]/20 transition-all duration-300">
-                                <i class="fa fa-tv fa-3x text-[#D4A44C]"></i>
-                            </div>
-                            <p class="text-white/70 text-xs mt-2 group-hover:text-[#D4A44C]">Nation Media</p>
-                        </div>
-                    </div>
+                    <livewire:brands-ui />
                 </div>
             </div>
         </div>
